@@ -5,7 +5,8 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 const Main = () => {
 	const { user, logOutUser } = useContext(AuthContext);
-	// console.log(user);
+
+	
 	const navItems = (
 		<>
 			<NavLink className={({ isActive }) => (isActive ? `bg-[#8de4af] p-2 rounded-md` : `p-2`)} to='/'>
@@ -34,14 +35,14 @@ const Main = () => {
 			{user && user?.email && (
 				<>
 					<span onClick={logOutUser}>Log Out</span>
-					<img className='w-12 h-12 rounded-full' src={user?.photoURL} alt={user.displayName} />
+					<img className='w-12 h-12 rounded-full mx-auto' src={user?.photoURL} alt={user.displayName} />
 				</>
 			)}
 		</>
 	);
 	return (
 		<div className='drawer'>
-			<input id='my-drawer-3' type='checkbox' className='drawer-toggle' />
+			<input id='my-drawer-3' type='checkbox' className='drawer-toggle'  />
 			<div className='drawer-content flex flex-col'>
 				{/* Navbar */}
 				<div className='w-full navbar bg-[#de4af] shadow-xl'>
@@ -71,7 +72,7 @@ const Main = () => {
 				<Footer />
 			</div>
 			<div className='drawer-side'>
-				<label htmlFor='my-drawer-3' className='drawer-overlay'></label>s
+				<label htmlFor='my-drawer-3' className='drawer-overlay'></label>
 				<ul className='menu w-80 h-full bg-base-200 gap-5 text-xl font-semibold text-center'>
 					<p className='text-2xl font-bold bg-[#8de4af] p-4 '>RhythmRoam</p>
 					{/* Sidebar content here */}

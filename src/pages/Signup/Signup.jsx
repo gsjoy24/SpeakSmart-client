@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
 import authImg from '../../assets/authImg.svg';
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Signup = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+		document.title = 'Register | ToyVerse';
+	}, []);
 	const { createUser, updateUserProfile } = useContext(AuthContext);
 	const [error, setError] = useState('');
 	const [passErr, setPassErr] = useState('');
@@ -199,8 +204,8 @@ const Signup = () => {
 					</button>
 					<p className='ml-3 text-sm'>
 						Already have an account?{' '}
-						<Link className='underline' to='/login'>
-							Login
+						<Link className='underline ml-2' to='/login'>
+							Login Here
 						</Link>
 					</p>
 				</form>
