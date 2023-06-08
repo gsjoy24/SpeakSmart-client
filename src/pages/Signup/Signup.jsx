@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import GoogleLogin from '../../components/GoogleLogin';
 
 const Signup = () => {
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
-		document.title = 'Register | ToyVerse';
+		document.title = 'Signup | RhythmRoam';
 	}, []);
 	const { createUser, updateUserProfile } = useContext(AuthContext);
 	const [error, setError] = useState('');
@@ -209,6 +210,7 @@ const Signup = () => {
 						</Link>
 					</p>
 				</form>
+				<GoogleLogin/> 
 			</div>
 		</div>
 	);

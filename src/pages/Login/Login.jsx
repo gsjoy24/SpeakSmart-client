@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import GoogleLogin from '../../components/GoogleLogin';
 
 const Login = () => {
 	const { loginWithEmail } = useContext(AuthContext);
@@ -87,12 +88,13 @@ const Login = () => {
 						login
 					</button>
 					<p className='ml-3 text-sm'>
-						New Here
+						New Here?
 						<Link className='underline mx-2' to='/signup'>
 							Sign Up
 						</Link>
 					</p>
 				</form>
+				<GoogleLogin />
 			</div>
 		</div>
 	);
