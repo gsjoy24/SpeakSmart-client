@@ -1,0 +1,22 @@
+[
+	{
+		"title": "Guitar Lessons",
+		"description": "Learn to play the guitar with our experienced instructors. Beginner and advanced classes available.",
+		"image": "https://i.ibb.co/gwZP2rP/guitar.jpg"
+	},
+	{
+		"title": "Piano Lessons",
+		"description": "Discover the beauty of playing the piano. Join our piano lessons and develop your musical skills.",
+		"image": "https://i.ibb.co/WV92HCX/Piano.jpg"
+	},
+	{
+		"title": "Drum Lessons",
+		"description": "Get your rhythm on point with our drum lessons. Start from the basics or enhance your drumming techniques.",
+		"image": "https://i.ibb.co/r2H9mD9/Drum.jpg"
+	},
+	{
+		"title": "Violin Lessons",
+		"description": "Experience the melodic sound of the violin. Learn to play classical pieces and explore various genres.",
+		"image": "https://i.ibb.co/BVmZ9BB/Violin.jpg"
+	}
+]
