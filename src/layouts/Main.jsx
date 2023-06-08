@@ -1,7 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Main = () => {
+	const { user, logOutUser } = useContext(AuthContext);
+	// console.log(user);
 	const navItems = (
 		<>
 			<NavLink className={({ isActive }) => (isActive ? `bg-[#8de4af] p-2 rounded-md` : `p-2`)} to='/'>
@@ -17,12 +21,22 @@ const Main = () => {
 			<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/classes'>
 				Classes
 			</NavLink>
-			<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/login'>
-				Login
-			</NavLink>
-			<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/signup'>
-				Sign up
-			</NavLink>
+			{!user && (
+				<>
+					<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/login'>
+						Login
+					</NavLink>
+					<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/signup'>
+						Sign up
+					</NavLink>
+				</>
+			)}
+			{user && user?.email && (
+				<>
+					<span onClick={logOutUser}>Log Out</span>
+					<img className='w-12 h-12 rounded-full' src={user?.photoURL} alt={user.displayName} />
+				</>
+			)}
 		</>
 	);
 	return (
