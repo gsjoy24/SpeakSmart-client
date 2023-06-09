@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/authImg.svg';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GoogleLogin from '../../components/GoogleLogin';
+import { toast } from 'react-hot-toast';
 
 const Signup = () => {
 	useEffect(() => {
@@ -18,6 +19,9 @@ const Signup = () => {
 	const [genderErr, setGenderErr] = useState('');
 	const [showPass, setShowPass] = useState('password');
 	const [showConfirmPass, setShowConfirmPass] = useState('password');
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -42,6 +46,8 @@ const Signup = () => {
 			.then((data) => {
 				updateUserProfile(formData.name, formData.photo_url).then(() => console.log('profile updated'));
 				console.log(data.user);
+				navigate(from, { replace: true });
+				toast.success('Successfully logged in!');
 			})
 			.catch((err) => {
 				console.log(err.message);
@@ -210,7 +216,7 @@ const Signup = () => {
 						</Link>
 					</p>
 				</form>
-				<GoogleLogin/> 
+				<GoogleLogin />
 			</div>
 		</div>
 	);

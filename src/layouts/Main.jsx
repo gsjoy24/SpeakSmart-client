@@ -6,16 +6,17 @@ import { AuthContext } from '../Providers/AuthProvider';
 const Main = () => {
 	const { user, logOutUser } = useContext(AuthContext);
 
-	
 	const navItems = (
 		<>
 			<NavLink className={({ isActive }) => (isActive ? `bg-[#8de4af] p-2 rounded-md` : `p-2`)} to='/'>
 				Home
 			</NavLink>
 
-			<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/dashboard'>
-				Dashboard
-			</NavLink>
+			{user && (
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/dashboard'>
+					Dashboard
+				</NavLink>
+			)}
 			<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/instructors'>
 				Instructors
 			</NavLink>
@@ -42,7 +43,7 @@ const Main = () => {
 	);
 	return (
 		<div className='drawer'>
-			<input id='my-drawer-3' type='checkbox' className='drawer-toggle'  />
+			<input id='my-drawer-3' type='checkbox' className='drawer-toggle' />
 			<div className='drawer-content flex flex-col'>
 				{/* Navbar */}
 				<div className='w-full navbar bg-[#de4af] shadow-xl'>

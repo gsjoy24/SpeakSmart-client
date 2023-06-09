@@ -9,7 +9,7 @@ import {
 	signInWithEmailAndPassword,
 	signOut
 } from 'firebase/auth';
-
+import axios from 'axios';
 import { app } from '../Firebase/firebase.config';
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
@@ -52,11 +52,28 @@ const AuthProvider = ({ children }) => {
 
 	// observing the user state
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currenUser) => {
-			setUser(currenUser);
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
 			setLoading(false);
+
+			if (currentUser && currentUser.email) {
+				console.log('doing', currentUser.email);
+				axios
+					.post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: currentUser.email })
+					.then((data) => {
+						console.log(data);
+						localStorage.setItem('access_token', data.data.token);
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} else {
+				localStorage.removeItem('access_token');
+			}
 		});
-		return () => unsubscribe();
+		return () => {
+			return unsubscribe();
+		};
 	}, []);
 
 	const authInfo = {
