@@ -1,15 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/authImg.svg';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GoogleLogin from '../../components/GoogleLogin';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
 	const { loginWithEmail } = useContext(AuthContext);
 	const [error, setError] = useState('');
 	const [showPass, setShowPass] = useState('password');
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
+	const navigate = useNavigate();
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
@@ -25,6 +29,8 @@ const Login = () => {
 		loginWithEmail(formData.email, formData.password)
 			.then((data) => {
 				console.log(data.user);
+				navigate(from, { replace: true });
+				toast.success('successfully logged in');
 			})
 			.catch((err) => {
 				console.log(err.message);
@@ -66,14 +72,14 @@ const Login = () => {
 						{showPass === 'password' && (
 							<FaEye
 								onClick={() => setShowPass('text')}
-								className='absolute top-4 right-3 active:scale-95 opacity-90'
+								className='absolute top-4 right-3 active:scale-95 opacity-90 cursor-pointer'
 								size={16}
 							/>
 						)}
 						{showPass === 'text' && (
 							<FaEyeSlash
 								onClick={() => setShowPass('password')}
-								className='absolute top-4 right-3 active:scale-95 opacity-90'
+								className='absolute top-4 right-3 active:scale-95 opacity-90 cursor-pointer'
 								size={16}
 							/>
 						)}

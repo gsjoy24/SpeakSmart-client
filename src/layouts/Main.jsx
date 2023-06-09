@@ -67,7 +67,7 @@ const Main = () => {
 					</div>
 				</div>
 				{/* Page content here */}
-				<div className='min-h-[calc(100vh-80px)]'>
+				<div className='min-h-[calc(100vh-80px)]  overflow-hidden duration-200'>
 					<Outlet />
 				</div>
 				<Footer />

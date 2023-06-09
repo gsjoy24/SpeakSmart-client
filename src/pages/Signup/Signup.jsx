@@ -6,6 +6,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GoogleLogin from '../../components/GoogleLogin';
 import { toast } from 'react-hot-toast';
+import { saveUser } from '../../apis/auth';
 
 const Signup = () => {
 	useEffect(() => {
@@ -44,8 +45,10 @@ const Signup = () => {
 
 		createUser(formData.email, formData.password)
 			.then((data) => {
-				updateUserProfile(formData.name, formData.photo_url).then(() => console.log('profile updated'));
-				console.log(data.user);
+				updateUserProfile(formData.name, formData.photo_url).then(() => {
+					console.log('profile updated');
+					saveUser(data.user);
+				});
 				navigate(from, { replace: true });
 				toast.success('Successfully logged in!');
 			})
