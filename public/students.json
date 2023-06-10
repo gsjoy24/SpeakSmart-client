@@ -1,0 +1,109 @@
+[
+	{
+		"className": "Intermediate Spanish",
+		"image": "https://i.ibb.co/qprDc8T/spanish.jpg",
+		"instructor": "John Smith",
+		"duration": "60 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 20,
+		"schedule": {
+			"days": "Monday, Wednesday, Friday",
+			"time": "10:00 AM - 11:00 AM"
+		},
+		"enrolledStudents": 10,
+		"availableSlots": 7,
+		"location": "Online",
+		"description": "Join our intermediate Spanish class and improve your conversational skills. The class will cover various topics, vocabulary, and grammar exercises.",
+		"requirements": "Basic understanding of Spanish grammar and vocabulary."
+	},
+
+	{
+		"className": "Advanced German",
+		"image": "https://i.ibb.co/4Nq5KbT/german.png",
+		"instructor": "Hans Müller",
+		"duration": "90 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 25,
+		"schedule": {
+			"days": "Monday, Wednesday, Friday",
+			"time": "6:00 PM - 7:30 PM"
+		},
+		"enrolledStudents": 12,
+		"availableSlots": 6,
+		"location": "Online",
+		"description": "Join our advanced German class to enhance your German language skills. The class will focus on complex grammar, advanced vocabulary, and conversation practice.",
+		"requirements": "Proficiency in German at an intermediate level."
+	},
+
+	{
+		"className": "Intermediate Japanese",
+		"image": "https://i.ibb.co/jRSBNfw/japanese.jpg",
+		"instructor": "Yuki Tanaka",
+		"duration": "75 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 22,
+		"schedule": {
+			"days": "Monday, Wednesday, Friday",
+			"time": "5:30 PM - 6:45 PM"
+		},
+		"enrolledStudents": 12,
+		"availableSlots": 9,
+		"location": "Online",
+		"description": "Join our intermediate Japanese class to further develop your Japanese language skills. The class will focus on advanced vocabulary, reading comprehension, and conversation practice.",
+		"requirements": "Basic understanding of Japanese grammar and vocabulary."
+	},
+
+	{
+		"className": "Business English",
+		"image": "https://i.ibb.co/mTH1syk/english.jpg",
+		"instructor": "Sarah Johnson",
+		"duration": "60 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 25,
+		"schedule": {
+			"days": "Monday, Wednesday, Friday",
+			"time": "9:00 AM - 10:00 AM"
+		},
+		"enrolledStudents": 15,
+		"availableSlots": 10,
+		"location": "Online",
+		"description": "Join our Business English class to enhance your language skills in a professional context. The class will cover business vocabulary, email writing, presentations, and more.",
+		"requirements": "Intermediate level of English proficiency."
+	},
+
+	{
+		"className": "Advanced Russian Grammar",
+		"image": "https://i.ibb.co/jZgLKwB/russian.jpg",
+		"instructor": "Elena Petrovna",
+		"duration": "90 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 25,
+		"schedule": {
+			"days": "Tuesday, Thursday",
+			"time": "7:00 PM - 8:30 PM"
+		},
+		"enrolledStudents": 12,
+		"availableSlots": 8,
+		"location": "Online",
+		"description": "Join our advanced Russian grammar class to deepen your understanding of Russian grammar rules and structures. The class will cover complex topics, exercises, and practical applications.",
+		"requirements": "Proficiency in Russian at an intermediate level."
+	},
+
+	{
+		"className": "Beginner Italian",
+		"image": "https://i.ibb.co/5F6HWdX/italian.jpg",
+		"instructor": "Giovanni Rossi",
+		"duration": "60 minutes",
+		"orientation": "Fri 23 Jun 2023",
+		"price": 18,
+		"schedule": {
+			"days": "Monday, Wednesday, Friday",
+			"time": "6:00 PM - 7:00 PM"
+		},
+		"enrolledStudents": 12,
+		"availableSlots": 6,
+		"location": "Online",
+		"description": "Join our beginner Italian class and start learning the basics of the Italian language. The class will cover essential vocabulary, grammar, and conversational skills.",
+		"requirements": "No prior knowledge of Italian required."
+	}
+]

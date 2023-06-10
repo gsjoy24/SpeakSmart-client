@@ -3,7 +3,8 @@ import Main from '../layouts/Main';
 import ErrorPage from '../pages/ErrorPage';
 import Signup from '../pages/Signup/Signup';
 import Login from '../pages/Login/Login';
-import Home from '../pages/Home/Home';
+import Home from '../pages/Home/Home/Home';
+
 const router = createBrowserRouter([
 	{
 		path: '/',

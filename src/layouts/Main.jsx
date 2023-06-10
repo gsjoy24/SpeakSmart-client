@@ -58,7 +58,7 @@ const Main = () => {
 							</svg>
 						</label>
 					</div>
-					<div className='flex-1 px-2 mx-2 text-xl font-bold'>RhythmRoam</div>
+					<div className='flex-1 px-2 mx-2 text-xl font-bold'>SpeakSmart</div>
 					<div className='flex-none hidden lg:block'>
 						<ul className='menu menu-horizontal items-center gap-4 font-semibold'>
 							{/* Navbar menu content here */}
