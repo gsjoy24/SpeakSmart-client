@@ -57,11 +57,10 @@ const AuthProvider = ({ children }) => {
 			setLoading(false);
 
 			if (currentUser && currentUser.email) {
-				console.log('doing', currentUser.email);
 				axios
 					.post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: currentUser.email })
 					.then((data) => {
-						console.log(data);
+						// console.log(data);
 						localStorage.setItem('access_token', data.data.token);
 					})
 					.catch((err) => {

@@ -35,7 +35,9 @@ const Main = () => {
 			)}
 			{user && user?.email && (
 				<>
-					<span onClick={logOutUser}>Log Out</span>
+					<span className='btn' onClick={logOutUser}>
+						Log Out
+					</span>
 					<img className='w-10 h-10 rounded-full mx-auto' src={user?.photoURL} alt={user.displayName} />
 				</>
 			)}
