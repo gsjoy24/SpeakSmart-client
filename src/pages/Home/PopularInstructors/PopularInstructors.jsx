@@ -15,7 +15,7 @@ const PopularInstructors = () => {
 		<div className='my-16 mx-5'>
 			<div className=' max-w-lg text-center mx-auto space-y-5'>
 				<h2 className='text-2xl sm:text-4xl font-bold text-gray-800'>
-					Meet Our Popular Instructors: Learn from the Best!
+					Meet Our Popular Instructors: <br /> Learn from the Best!
 				</h2>
 				<p className='text-gray-500'>
 					Explore a Diverse Team of Experienced Instructors and Expand Your Language Skills!
