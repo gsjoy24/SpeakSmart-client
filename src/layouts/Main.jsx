@@ -8,7 +8,9 @@ const Main = () => {
 
 	const navItems = (
 		<>
-			<NavLink className={({ isActive }) => (isActive ? `bg-[#8de4af] p-2 rounded-md` : `p-2`)} to='/'>
+			<NavLink
+				className={({ isActive }) => (isActive ? `bg-[#8de4af] p-2 rounded-md` : `p-2`)}
+				to='/'>
 				Home
 			</NavLink>
 
@@ -35,7 +37,7 @@ const Main = () => {
 			)}
 			{user && user?.email && (
 				<>
-					<span className='btn' onClick={logOutUser}>
+					<span className='p-2 cursor-pointer' onClick={logOutUser}>
 						Log Out
 					</span>
 					<img className='w-10 h-10 rounded-full mx-auto' src={user?.photoURL} alt={user.displayName} />
@@ -48,7 +50,7 @@ const Main = () => {
 			<input id='my-drawer-3' type='checkbox' className='drawer-toggle' />
 			<div className='drawer-content flex flex-col'>
 				{/* Navbar */}
-				<div className='w-full navbar bg-[#de4af] shadow-xl'>
+				<div className='w-full navbar bg-white  shadow-xl sticky top-0 z-40'>
 					<div className='flex-none lg:hidden'>
 						<label htmlFor='my-drawer-3' className='btn btn-square btn-ghost'>
 							<svg
@@ -61,7 +63,7 @@ const Main = () => {
 						</label>
 					</div>
 					<div className='flex-1 px-2 mx-2 text-xl font-bold'>SpeakSmart</div>
-					<div className='flex-none hidden lg:block'>
+					<div className='flex-none hidden lg:block '>
 						<ul className='menu menu-horizontal items-center gap-4 font-semibold'>
 							{/* Navbar menu content here */}
 							{navItems}
@@ -74,7 +76,7 @@ const Main = () => {
 				</div>
 				<Footer />
 			</div>
-			<div className='drawer-side'>
+			<div className='drawer-side z-50'>
 				<label htmlFor='my-drawer-3' className='drawer-overlay'></label>
 				<ul className='menu w-80 h-full bg-base-200 gap-5 text-xl font-semibold text-center'>
 					<p className='text-2xl font-bold bg-[#8de4af] p-4 '>RhythmRoam</p>

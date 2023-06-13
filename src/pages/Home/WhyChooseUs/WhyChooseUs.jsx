@@ -1,12 +1,10 @@
 import { FaLaptopHouse, FaPuzzlePiece } from 'react-icons/fa';
 import { GiLifeSupport, GiTeacher } from 'react-icons/gi';
+import SectionHeading from '../../../components/SectionHeading';
 const WhyChooseUs = () => {
 	return (
-		<div className='my-16 mx-4 md:mx-12'>
-			<div className=' max-w-lg text-center mx-auto space-y-5'>
-				<h2 className='text-2xl sm:text-4xl font-bold text-gray-800'>Why Choose Us?</h2>
-				<p className='text-gray-500'>A choice that makes the difference.</p>
-			</div>
+		<div className='py-8 mx-4 md:mx-12'>
+			<SectionHeading heading='Why Choose Us?' subHeading='A choice that makes the difference.' />
 
 			<div className='grid grid-cols-1 lg:grid-cols-2 mt-16 gap-8'>
 				{/* 1 */}
