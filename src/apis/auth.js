@@ -13,3 +13,9 @@ export const saveUser = (user) => {
 		.then((data) => console.log(data))
 		.catch((err) => console.log(err));
 };
+
+export const userRole = async (email) => {
+	const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/users/${email}`);
+	const data = await res.json();
+	return data?.role;
+};

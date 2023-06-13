@@ -11,7 +11,7 @@ const DisplayCard = ({ SingleClass }) => {
 			</figure>
 			<div className='card-body text-sm'>
 				<h2 className='card-title mb-2'>
-					<BsGlobeEuropeAfrica size={24} className='mr-2'/> {SingleClass?.className}
+					<BsGlobeEuropeAfrica size={24} className='mr-2' /> {SingleClass?.className}
 				</h2>
 				<p className='flex items-center gap-3'>
 					<TbArmchair size={24} /> only {SingleClass?.availableSlots} seats are available

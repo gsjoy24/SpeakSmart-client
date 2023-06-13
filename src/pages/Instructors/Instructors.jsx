@@ -15,7 +15,7 @@ const Instructors = () => {
 
 	console.log(allInstructors);
 	return (
-		<div className='mx-12'>
+		<div>
 			<div className='relative '>
 				<img className='h-44 md:h-72 w-full object-cover blur-sm' src={bgImg} alt='instructors' />
 				<h1
@@ -28,7 +28,7 @@ const Instructors = () => {
 				heading='Meet Our Expert Instructors'
 				subHeading='Passionate Educators Dedicated to Your Success!'
 			/>
-			<div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-7 py-12'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 py-12 mx-12'>
 				{allInstructors.map((instructor) => (
 					<InstructorCard key={instructor._id} instructor={instructor} />
 				))}

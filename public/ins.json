@@ -3,42 +3,42 @@
 		"name": "John Smith",
 		"email": "john@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/bghqR1x/Spanish.png",
+		"photoURL": "https://i.ibb.co/bghqR1x/Spanish.png",
 		"role": "instructor"
 	},
 	{
 		"name": "Sarah Johnson",
 		"email": "sarah@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/sJPMD3s/english.png",
+		"photoURL": "https://i.ibb.co/sJPMD3s/english.png",
 		"role": "instructor"
 	},
 	{
 		"name": "Hans Müller",
 		"email": "hans@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/gF1cNNg/german.png",
+		"photoURL": "https://i.ibb.co/gF1cNNg/german.png",
 		"role": "instructor"
 	},
 	{
 		"name": "Yuki Tanaka",
 		"email": "yuki@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/hCJ1b0P/Japanese.png",
+		"photoURL": "https://i.ibb.co/hCJ1b0P/Japanese.png",
 		"role": "instructor"
 	},
 	{
 		"name": "Elena Petrovna",
 		"email": "elena@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/grrywVf/Russian.png",
+		"photoURL": "https://i.ibb.co/grrywVf/Russian.png",
 		"role": "instructor"
 	},
 	{
 		"name": "Giovanni Rossi",
 		"email": "giovanni@gmail.com",
 		"classes": 1,
-		"image": "https://i.ibb.co/0XGdBK5/Italian.png",
+		"photoURL": "https://i.ibb.co/0XGdBK5/Italian.png",
 		"role": "instructor"
 	}
 ]

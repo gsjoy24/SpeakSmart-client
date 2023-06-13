@@ -11,12 +11,14 @@ import {
 } from 'firebase/auth';
 import axios from 'axios';
 import { app } from '../Firebase/firebase.config';
+import { userRole } from '../apis/auth';
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
+	const [role, setRole] = useState(null);
 	const [loading, setLoading] = useState(true);
 
 	// create a new user
@@ -70,13 +72,21 @@ const AuthProvider = ({ children }) => {
 				localStorage.removeItem('access_token');
 			}
 		});
+
 		return () => {
 			return unsubscribe();
 		};
 	}, []);
 
+	useEffect(() => {
+		if (user) {
+			userRole(user?.email).then((data) => setRole(data));
+		}
+	}, [user]);
+
 	const authInfo = {
 		user,
+		role,
 		loading,
 		createUser,
 		continueWithGoogle,
