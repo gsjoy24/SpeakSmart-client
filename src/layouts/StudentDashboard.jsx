@@ -40,6 +40,13 @@ const StudentDashboard = () => {
 								My Enrolled Classes
 							</NavLink>
 						</li>
+						<li>
+							<NavLink
+								className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+								to='my-enrolled-classes'>
+								Payment History
+							</NavLink>
+						</li>
 					</ul>
 				</div>
 			</div>

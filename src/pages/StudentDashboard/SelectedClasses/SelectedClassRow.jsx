@@ -1,9 +1,12 @@
 import { toast } from 'react-hot-toast';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { FaUserTie, FaDollarSign, FaEnvelope } from 'react-icons/fa';
 
 const SelectedClassRow = ({ selectedClass, i, refetch }) => {
 	const [axiosSecure] = useAxiosSecure();
+
+	// delete selected class
 	const handleDelete = (id) => {
 		Swal.fire({
 			title: 'Are you sure?',
@@ -36,14 +39,18 @@ const SelectedClassRow = ({ selectedClass, i, refetch }) => {
 					</div>
 					<div>
 						<div className='font-bold'>{selectedClass.className}</div>
-						<div className='text-sm opacity-50'>Price: {selectedClass?.price}</div>
+						<div className='text-sm opacity-50'>Price: $ {selectedClass?.price}</div>
 					</div>
 				</div>
 			</td>
 			<td className='flex flex-col gap-2'>
-				<span className='ml-2'>{selectedClass?.instructor}</span>
-
-				<span className='badge badge-ghost badge-sm'>{selectedClass?.instructorEmail}</span>
+				<span className='ml-2 flex items-center gap-2'>
+					<FaUserTie />
+					{selectedClass?.instructor}
+				</span>
+				<span className='badge badge-ghost badge-sm flex items-center gap-2 p-2'>
+					<FaEnvelope /> {selectedClass?.instructorEmail}
+				</span>
 			</td>
 			<td>
 				<button onClick={() => handleDelete(selectedClass._id)} className='btn btn-sm btn-error'>

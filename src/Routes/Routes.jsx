@@ -7,7 +7,8 @@ import Home from '../pages/Home/Home/Home';
 import Instructors from '../pages/Instructors/Instructors';
 import Classes from '../pages/Classes/Classes';
 import StudentDashboard from '../layouts/StudentDashboard';
-import SelectedClasses from '../pages/SelectedClasses/SelectedClasses';
+import SelectedClasses from '../pages/StudentDashboard/SelectedClasses/SelectedClasses';
+import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
 
 const router = createBrowserRouter([
 	{
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
 			{
 				path: 'my-selected-classes',
 				element: <SelectedClasses />
+			},
+			{
+				path: 'payment/:id',
+				element: <PaymentPage />
 			}
 		]
 	}
