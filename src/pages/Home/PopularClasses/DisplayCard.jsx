@@ -14,7 +14,15 @@ const DisplayCard = ({ SingleClass }) => {
 					<BsGlobeEuropeAfrica size={24} className='mr-2' /> {SingleClass?.className}
 				</h2>
 				<p className='flex items-center gap-3'>
-					<TbArmchair size={24} /> only {SingleClass?.availableSlots} seats are available
+					{SingleClass?.availableSlots > 0 ? (
+						<>
+							<TbArmchair size={24} /> only {SingleClass?.availableSlots} seats are available
+						</>
+					) : (
+						<>
+							<TbArmchair size={24} /> Apologies, all seats are currently occupied.
+						</>
+					)}
 				</p>
 			</div>
 		</div>

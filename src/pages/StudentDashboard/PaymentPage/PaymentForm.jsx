@@ -4,8 +4,9 @@ import { toast } from 'react-hot-toast';
 import { BsFillExclamationCircleFill } from 'react-icons/bs';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { GiSpinningBlades } from 'react-icons/gi';
 
-const PaymentForm = ({ price }) => {
+const PaymentForm = ({ price, selectedClass }) => {
 	const { user } = useContext(AuthContext);
 	const stripe = useStripe();
 	const elements = useElements();
@@ -41,8 +42,8 @@ const PaymentForm = ({ price }) => {
 			console.log('[error]', error);
 			setCardErr(error.message);
 		} else {
+			console.log(paymentMethod);
 			setCardErr('');
-			console.log('[PaymentMethod]', paymentMethod);
 		}
 		setProcessing(true);
 		const { paymentIntent, error: confirmErr } = await stripe.confirmCardPayment(clientSecret, {
@@ -59,9 +60,51 @@ const PaymentForm = ({ price }) => {
 			console.log(confirmErr.message);
 			setCardErr(confirmErr.message);
 		}
+
 		setProcessing(false);
-		console.log(paymentIntent);
+		if (paymentIntent.status === 'succeeded') {
+			toast.success('Payment successful. Enjoy your class!');
+			// add the paid class to the enrolled collection and remove it from the selected collection
+			const { _id, ...enrolledClassInfo } = selectedClass;
+
+			axiosSecure.post('/enrolled-classes', enrolledClassInfo).then((res) => {
+				if (res.data.insertedId) {
+					axiosSecure.delete(`/selected-class/${selectedClass._id}`).then((data) => {
+						if (data.data.deletedCount > 0) {
+							console.log('Class deleted successfully!');
+						}
+					});
+				}
+			});
+			const paymentInfo = {
+				className: selectedClass?.className,
+				instructor: selectedClass?.instructor,
+				instructorEmail: selectedClass?.instructorEmail,
+				transactionId: paymentIntent?.id,
+				amount: selectedClass?.price,
+				date: new Date()
+			};
+			// add payment information to the database
+			axiosSecure.post('/payments', paymentInfo).then((res) => {
+				console.log(res.data);
+			});
+
+			axiosSecure.get(`/classes/${selectedClass?.classId}`).then((getResponse) => {
+				const enrolledClass = getResponse.data;
+				const updatedInfo = {
+					availableSlots: enrolledClass?.availableSlots - 1,
+					enrolledStudents: enrolledClass?.enrolledStudents + 1
+				};
+				console.log(enrolledClass);
+				if (enrolledClass) {
+					axiosSecure.patch(`/classes/${selectedClass?.classId}`, updatedInfo).then((patchResponse) => {
+						console.log(patchResponse.data);
+					});
+				}
+			});
+		}
 	};
+
 	return (
 		<div className='flex flex-col justify-center items-center w-full min-h-[90vh]'>
 			<form onSubmit={handleSubmit} className='max-w-md mx-auto w-full px-6'>
@@ -86,12 +129,21 @@ const PaymentForm = ({ price }) => {
 						<BsFillExclamationCircleFill size={16} /> {cardErr}
 					</p>
 				)}
-				<button
-					className='btn mx-auto bg-[#8de4af] hover:bg-[#2bd06a] btn-block block mt-5'
-					type='submit'
-					disabled={!stripe || !clientSecret || processing}>
-					Pay
-				</button>
+
+				{processing ? (
+					<button
+						type='button'
+						className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center mt-5'>
+						<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
+					</button>
+				) : (
+					<button
+						className='btn mx-auto bg-[#8de4af] hover:bg-[#2bd06a] btn-block block mt-5'
+						type='submit'
+						disabled={!stripe || !clientSecret || processing}>
+						Pay
+					</button>
+				)}
 			</form>
 		</div>
 	);

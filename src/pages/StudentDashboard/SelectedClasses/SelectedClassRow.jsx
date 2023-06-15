@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import { FaUserTie, FaDollarSign, FaEnvelope } from 'react-icons/fa';
+import { FaUserTie, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const SelectedClassRow = ({ selectedClass, i, refetch }) => {
