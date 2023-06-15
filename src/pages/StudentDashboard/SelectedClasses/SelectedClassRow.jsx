@@ -59,7 +59,7 @@ const SelectedClassRow = ({ selectedClass, i, refetch }) => {
 				</button>
 			</td>
 			<th>
-				<Link to={`/dashboard/payment/${selectedClass._id}`} className='btn btn-sm btn-success'>
+				<Link to={`/dashboard/pay/${selectedClass._id}`} className='btn btn-sm btn-success'>
 					pay
 				</Link>
 			</th>

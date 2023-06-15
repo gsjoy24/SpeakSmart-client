@@ -10,6 +10,7 @@ import StudentDashboard from '../layouts/StudentDashboard';
 import SelectedClasses from '../pages/StudentDashboard/SelectedClasses/SelectedClasses';
 import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
 import axios from 'axios';
+import Payments from '../pages/StudentDashboard/Payments/Payments';
 
 const router = createBrowserRouter([
 	{
@@ -48,9 +49,13 @@ const router = createBrowserRouter([
 				element: <SelectedClasses />
 			},
 			{
-				path: 'payment/:id',
+				path: 'pay/:id',
 				element: <PaymentPage />,
 				loader: ({ params }) => axios.get(`http://localhost:5000/selected-class/${params.id}`)
+			},
+			{
+				path: 'payment-history',
+				element: <Payments />
 			}
 		]
 	}

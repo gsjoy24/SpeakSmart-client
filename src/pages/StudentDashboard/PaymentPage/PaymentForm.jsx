@@ -77,7 +77,9 @@ const PaymentForm = ({ price, selectedClass }) => {
 				}
 			});
 			const paymentInfo = {
+				studentEmail: user?.email,
 				className: selectedClass?.className,
+				image: selectedClass?.image,
 				instructor: selectedClass?.instructor,
 				instructorEmail: selectedClass?.instructorEmail,
 				transactionId: paymentIntent?.id,

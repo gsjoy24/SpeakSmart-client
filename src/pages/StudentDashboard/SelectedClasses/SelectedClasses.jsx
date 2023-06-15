@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -27,7 +26,7 @@ const SelectedClasses = () => {
 			{isLoading ? (
 				<Loader />
 			) : selectedClasses.length === 0 && Array.isArray(selectedClasses) ? (
-				<Empty title='See Classes' path='../../classes'/>
+				<Empty title='See Classes' path='../../classes' />
 			) : (
 				<div className='mx-6'>
 					<h1 className='text-2xl md:text-4xl text-gray-700 font-bold text-center my-6'>All Selected Classes</h1>
