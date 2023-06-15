@@ -2,7 +2,8 @@ export const saveUser = (user) => {
 	const currentUser = {
 		name: user?.displayName,
 		email: user?.email,
-		photoURL: user?.photoURL
+		photoURL: user?.photoURL,
+		role: 'student'
 	};
 	fetch(`${import.meta.env.VITE_SERVER_URL}/users/${user?.email}`, {
 		method: 'PUT',

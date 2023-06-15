@@ -3,8 +3,14 @@ import axios from 'axios';
 import bgImg from '../../assets/classes.jpg';
 import SectionHeading from '../../components/SectionHeading';
 import ClassCard from './ClassCard';
+import { useEffect } from 'react';
 
 const Classes = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+		document.title = 'Classes | SpeakSmart';
+	}, []);
 	const { data: approvedClasses = [] } = useQuery({
 		queryKey: ['approvedClasses'],
 		queryFn: async () => {
@@ -28,7 +34,7 @@ const Classes = () => {
 				subHeading='Immerse Yourself in a World of Linguistic Proficiency and Cultural Fluency'
 			/>
 
-			<div className='grid grid-cols-1  md:grid-cols-2 gap-12 py-12 mx-12'>
+			<div className='grid grid-cols-1  md:grid-cols-1 gap-12 py-12 mx-4 md:mx-12'>
 				{approvedClasses.map((singleClass) => (
 					<ClassCard key={singleClass._id} singleClass={singleClass} />
 				))}

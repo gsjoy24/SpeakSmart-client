@@ -18,7 +18,7 @@ const PopularClasses = () => {
 				heading='Explore Our Popular Courses!'
 				subHeading=' Discover the Most Enrolled Language Classes and Enhance Your Language Skills!'
 			/>
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 mt-12'>
 				{popularClasses.map((SingleClass) => (
 					<DisplayCard key={SingleClass?._id} SingleClass={SingleClass} />
 				))}

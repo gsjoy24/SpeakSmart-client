@@ -1,83 +1,135 @@
 import { useContext } from 'react';
 import { BsGlobeEuropeAfrica } from 'react-icons/bs';
-import { FaUserTie, FaCalendarCheck, FaClock, FaDollarSign, FaCheckDouble } from 'react-icons/fa';
+import { FaUserTie, FaCalendarCheck, FaClock, FaDollarSign, FaCheckDouble, FaEnvelope } from 'react-icons/fa';
 import { MdLocationOn, MdChair } from 'react-icons/md';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { toast } from 'react-hot-toast';
 
 const ClassCard = ({ singleClass }) => {
-	const { role } = useContext(AuthContext);
+	const {
+		className,
+		image,
+		description,
+		requirements,
+		instructor,
+		orientation,
+		duration,
+		location,
+		price,
+		availableSlots,
+		instructorEmail
+	} = singleClass;
 
+	const { user, role } = useContext(AuthContext);
+	const [axiosSecure] = useAxiosSecure();
+	const navigate = useNavigate();
+
+	const selectClass = () => {
+		if (!user && !user?.email) {
+			navigate('/login');
+			Swal.fire({
+				icon: 'warning',
+				title: 'Please log in to select any classes!',
+				showConfirmButton: false,
+				timer: 2000
+			});
+			return;
+		}
+		const classInfo = {
+			student: user?.email,
+			classId: singleClass?._id,
+			className,
+			image,
+			price,
+			instructor,
+			instructorEmail
+		};
+		axiosSecure.post('/select-class', classInfo).then((res) => {
+			if (res.data.insertedId) {
+				toast.success('Class Selected');
+			}
+		});
+	};
 	return (
 		<div
-			className={`card shadow-xl max-w-lg mx-auto hover:scale-105 duration-150 hover:bg-[#45ff455d] group first-line:border  ${
+			className={`card lg:card-side shadow-xl mx-auto duration-150 hover:bg-[#45ff455d] group first-line:border  ${
 				!singleClass?.availableSlots && 'bg-red-200 hover:bg-red-300'
 			}`}>
 			<figure>
 				<img
-					className='group-hover:scale-105 duration-150 h-56 w-full object-cover border-b'
-					src={singleClass?.image}
-					alt={singleClass?.className}
+					className='group-hover:scale-105 duration-150 lg:h-2/3 lg:pl-8 w-full object-cover border-b'
+					src={image}
+					alt={className}
 				/>
 			</figure>
-			<div className='card-body'>
+			<div className='card-body space-y-2'>
 				<h2 className='card-title mb-2'>
-					<BsGlobeEuropeAfrica size={24} className='mr-2' /> {singleClass?.className}
+					<BsGlobeEuropeAfrica size={24} className='mr-2' /> {className}
 				</h2>
-				<p>{singleClass?.description}</p>
+				<p>{description}</p>
 				<p className='flex items-center gap-3 mt-4'>
 					<FaCheckDouble size={20} />
 					<span>
-						<span className='font-bold'>Requirements</span> : {singleClass?.requirements}
+						<span className='font-bold'>Requirements</span> : {requirements}
 					</span>
 				</p>
-				<div className='my-2 space-y-4'>
+				<div className='flex flex-col md:flex-row gap-3'>
 					<p className='flex items-center gap-3'>
 						<FaUserTie size={20} />
 						<span>
-							<span className='font-bold'>Instructor</span> : {singleClass?.instructor}
+							<span className='font-bold'>Instructor</span> : {instructor}
 						</span>
 					</p>
-
 					<p className='flex items-center gap-3'>
-						<FaCalendarCheck size={20} />
+						<FaEnvelope size={20} />
 						<span>
-							<span className='font-bold'>Orientation</span>: {singleClass?.orientation}
+							<span className='font-bold'>Email</span> : {instructorEmail}
 						</span>
 					</p>
 				</div>
 
-				<div className='flex flex-col gap-4 lg:flex-row'>
+				<div className='flex flex-col md:flex-row gap-3'>
 					<p className='flex items-center gap-3'>
 						<FaClock size={20} />
 						<span>
-							<span className='font-bold'>Duration</span> : {singleClass?.duration}
+							<span className='font-bold'>Duration</span> : {duration}
 						</span>
 					</p>
 					<p className='flex items-center gap-3'>
-						<MdLocationOn size={22} />
+						<MdLocationOn size={24} />
 						<span>
-							<span className='font-bold'>Platform</span> : {singleClass?.location}
+							<span className='font-bold'>Platform</span> : {location}
 						</span>
 					</p>
 				</div>
 
-				<div className='flex flex-col gap-4 lg:flex-row'>
+				<div className='flex flex-col md:flex-row gap-3'>
 					<p className='flex items-center gap-3'>
-						<MdChair size={20} />
+						<MdChair size={23} />
 						<span>
-							<span className='font-bold'>Available Seats </span>: {singleClass?.availableSlots}
+							<span className='font-bold'>Available Seats </span>: {availableSlots}
 						</span>
 					</p>
 					<p className='flex items-center gap-3'>
 						<FaDollarSign size={20} />
 						<span>
-							<span className='font-bold'>Price</span> : {singleClass?.price}
+							<span className='font-bold'>Price</span> : {price}
 						</span>
 					</p>
 				</div>
+				<p className='flex items-center gap-3'>
+					<FaCalendarCheck size={20} />
+					<span>
+						<span className='font-bold'>Orientation</span>: {orientation}
+					</span>
+				</p>
 			</div>
 			<button
-				disabled={!singleClass?.availableSlots || role === 'admin' || role === 'instructor'}
+				onClick={selectClass}
+				disabled={!availableSlots || role === 'admin' || role === 'instructor'}
 				className='btn m-3 bg-[#8de4af] hover:bg-[#62dc91]'>
 				select
 			</button>

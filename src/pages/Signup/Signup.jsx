@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/authImg.svg';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
@@ -7,21 +7,22 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GoogleLogin from '../../components/GoogleLogin';
 import { toast } from 'react-hot-toast';
 import { saveUser } from '../../apis/auth';
+import { GiSpinningBlades } from 'react-icons/gi';
 
 const Signup = () => {
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
-		document.title = 'Signup | RhythmRoam';
+		document.title = 'Signup | SpeakSmart';
 	}, []);
+
 	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState('');
 	const [passErr, setPassErr] = useState('');
 	const [genderErr, setGenderErr] = useState('');
 	const [showPass, setShowPass] = useState('password');
 	const [showConfirmPass, setShowConfirmPass] = useState('password');
-	const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
 	const navigate = useNavigate();
 
 	const {
@@ -42,24 +43,26 @@ const Signup = () => {
 			setGenderErr('Please select your gender!');
 			return;
 		}
-
+		setLoading(true);
 		createUser(formData.email, formData.password)
 			.then((data) => {
 				updateUserProfile(formData.name, formData.photo_url).then(() => {
 					console.log('profile updated');
 					saveUser(data.user);
 				});
-				navigate(from, { replace: true });
+				navigate('/');
 				toast.success('Successfully logged in!');
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err.message);
 				setError(err.message);
+				setLoading(false);
 			});
 	};
 
 	return (
-		<div className='lg:flex justify-center items-center py-12'>
+		<div className='lg:flex justify-center h-full items-center py-12'>
 			<div className='w-full lg:w-1/2'>
 				<img className='w-full max-w-xl mx-auto' src={authImg} alt='signup' />
 			</div>
@@ -209,9 +212,19 @@ const Signup = () => {
 						</p>
 					)}
 					{error && <p className='mt-2 ml-1 text-red-600 text-xs'>{error}</p>}
-					<button type='submit' className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82]'>
-						Sign up
-					</button>
+					{loading ? (
+						<button
+							type='button'
+							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
+						</button>
+					) : (
+						<button
+							type='submit'
+							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							sign up
+						</button>
+					)}
 					<p className='ml-3 text-sm'>
 						Already have an account?{' '}
 						<Link className='underline ml-2' to='/login'>

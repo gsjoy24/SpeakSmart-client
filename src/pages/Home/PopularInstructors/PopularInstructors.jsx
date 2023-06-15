@@ -18,7 +18,7 @@ const PopularInstructors = () => {
 				heading='Meet Our Popular Instructors: Learn from the Best!'
 				subHeading='Explore a Diverse Team of Experienced Instructors and Expand Your Language Skills!'
 			/>
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 mt-12'>
 				{popularInstructors.map((instructor) => (
 					<InstructorCardPreview key={instructor?._id} instructor={instructor} />
 				))}

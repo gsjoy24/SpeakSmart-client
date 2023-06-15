@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/authImg.svg';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
@@ -6,18 +6,19 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GoogleLogin from '../../components/GoogleLogin';
 import { toast } from 'react-hot-toast';
+import { GiSpinningBlades } from 'react-icons/gi';
 
 const Login = () => {
+	const [loading, setLoading] = useState(false);
 	const { loginWithEmail } = useContext(AuthContext);
 	const [error, setError] = useState('');
 	const [showPass, setShowPass] = useState('password');
-	const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
+
 	const navigate = useNavigate();
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
-		document.title = 'Register | ToyVerse';
+		document.title = 'Login | SpeakSmart';
 	}, []);
 	const {
 		register,
@@ -26,20 +27,23 @@ const Login = () => {
 	} = useForm();
 
 	const onSubmit = (formData) => {
+		setLoading(true);
 		loginWithEmail(formData.email, formData.password)
 			.then((data) => {
+				setLoading(false);
 				console.log(data.user);
-				navigate(from, { replace: true });
+				navigate('/');
 				toast.success('successfully logged in');
 			})
 			.catch((err) => {
+				setLoading(false);
 				console.log(err.message);
 				setError(err.message);
 			});
 	};
 
 	return (
-		<div className='lg:flex justify-center items-center py-12'>
+		<div className='lg:flex justify-center h-full items-center py-12'>
 			<div className='w-full lg:w-1/2'>
 				<img className='w-full max-w-xl mx-auto' src={authImg} alt='signup' />
 			</div>
@@ -90,9 +94,19 @@ const Login = () => {
 						</p>
 					)}
 					{error && <p className='mt-2 ml-1 text-red-600 text-xs'>{error}</p>}
-					<button type='submit' className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82]'>
-						login
-					</button>
+					{loading ? (
+						<button
+							type='button'
+							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
+						</button>
+					) : (
+						<button
+							type='submit'
+							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							login
+						</button>
+					)}
 					<p className='ml-3 text-sm'>
 						New Here?
 						<Link className='underline mx-2' to='/signup'>

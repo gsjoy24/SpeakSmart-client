@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+	transition: 250ms linear;
+	-webkit-transition: 250ms linear;
+	-moz-transition: 250ms linear;
+	-ms-transition: 250ms linear;
+	-o-transition: 250ms linear;
+}

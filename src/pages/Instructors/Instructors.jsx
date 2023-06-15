@@ -3,8 +3,14 @@ import axios from 'axios';
 import bgImg from '../../assets/instructors.jpg';
 import SectionHeading from '../../components/SectionHeading';
 import InstructorCard from './InstructorCard';
+import { useEffect } from 'react';
 
 const Instructors = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+		document.title = 'Instructors | SpeakSmart';
+	}, []);
 	const { data: allInstructors = [] } = useQuery({
 		queryKey: ['allInstructors'],
 		queryFn: async () => {

@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 	<AuthProvider>
 		<QueryClientProvider client={queryClient}>
 			<Toaster />
-			<RouterProvider router={router} />
+			<div className='max-w-[1440px] mx-auto'>
+				<RouterProvider router={router} />
+			</div>
 		</QueryClientProvider>
 	</AuthProvider>
 );
