@@ -65,8 +65,12 @@ const PaymentForm = ({ price, selectedClass }) => {
 		if (paymentIntent.status === 'succeeded') {
 			toast.success('Payment successful. Enjoy your class!');
 			// add the paid class to the enrolled collection and remove it from the selected collection
-			const { _id, ...enrolledClassInfo } = selectedClass;
+			const { _id, ...enrolledClassRest } = selectedClass;
 
+			const enrolledClassInfo = {
+				...enrolledClassRest,
+				date: new Date()
+			};
 			axiosSecure.post('/enrolled-classes', enrolledClassInfo).then((res) => {
 				if (res.data.insertedId) {
 					axiosSecure.delete(`/selected-class/${selectedClass._id}`).then((data) => {
@@ -108,7 +112,7 @@ const PaymentForm = ({ price, selectedClass }) => {
 	};
 
 	return (
-		<div className='flex flex-col justify-center items-center w-full min-h-[90vh]'>
+		<div className='flex flex-col justify-center items-center w-full min-h-[50vh]'>
 			<form onSubmit={handleSubmit} className='max-w-md mx-auto w-full px-6'>
 				<CardElement
 					options={{

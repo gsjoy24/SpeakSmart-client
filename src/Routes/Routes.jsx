@@ -11,6 +11,7 @@ import SelectedClasses from '../pages/StudentDashboard/SelectedClasses/SelectedC
 import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
 import axios from 'axios';
 import Payments from '../pages/StudentDashboard/Payments/Payments';
+import MyEnrolledClasses from '../pages/StudentDashboard/MyEnrolledClasses/MyEnrolledClasses';
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
 				path: 'pay/:id',
 				element: <PaymentPage />,
 				loader: ({ params }) => axios.get(`http://localhost:5000/selected-class/${params.id}`)
+			},
+			{
+				path: 'my-enrolled-classes',
+				element: <MyEnrolledClasses />
 			},
 			{
 				path: 'payment-history',
