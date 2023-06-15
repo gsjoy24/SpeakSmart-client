@@ -9,8 +9,6 @@ import Empty from '../../../components/Empty';
 
 const SelectedClasses = () => {
 	const { user } = useContext(AuthContext);
-	console.log(user?.email);
-
 	const [axiosSecure] = useAxiosSecure();
 	const {
 		data: selectedClasses = [],

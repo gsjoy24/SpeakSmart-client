@@ -9,6 +9,7 @@ import Classes from '../pages/Classes/Classes';
 import StudentDashboard from '../layouts/StudentDashboard';
 import SelectedClasses from '../pages/StudentDashboard/SelectedClasses/SelectedClasses';
 import PaymentPage from '../pages/StudentDashboard/PaymentPage/PaymentPage';
+import axios from 'axios';
 
 const router = createBrowserRouter([
 	{
@@ -48,7 +49,8 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'payment/:id',
-				element: <PaymentPage />
+				element: <PaymentPage />,
+				loader: ({ params }) => axios.get(`http://localhost:5000/selected-class/${params.id}`)
 			}
 		]
 	}

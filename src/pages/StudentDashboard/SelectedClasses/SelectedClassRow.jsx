@@ -2,6 +2,7 @@ import { toast } from 'react-hot-toast';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaUserTie, FaDollarSign, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SelectedClassRow = ({ selectedClass, i, refetch }) => {
 	const [axiosSecure] = useAxiosSecure();
@@ -58,7 +59,9 @@ const SelectedClassRow = ({ selectedClass, i, refetch }) => {
 				</button>
 			</td>
 			<th>
-				<button className='btn btn-sm btn-success'>pay</button>
+				<Link to={`/dashboard/payment/${selectedClass._id}`} className='btn btn-sm btn-success'>
+					pay
+				</Link>
 			</th>
 		</tr>
 	);
