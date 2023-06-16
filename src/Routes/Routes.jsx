@@ -15,6 +15,10 @@ import MyEnrolledClasses from '../pages/StudentDashboard/MyEnrolledClasses/MyEnr
 import StudentRoute from './StudentRoute/StudentRoute';
 import AddClass from '../pages/InstructorDashboard/AddClass/AddClass';
 import MyClasses from '../pages/InstructorDashboard/MyClasses/MyClasses';
+import UpdateClass from '../pages/InstructorDashboard/MyClasses/UpdateClass';
+import InstructorRoute from './InstructorRoute/InstructorRoute';
+import ManageUsers from '../pages/AdminDashboard/ManageUsers/ManageUsers';
+import ManageClasses from '../pages/AdminDashboard/ManageClasses/ManageClasses';
 
 const router = createBrowserRouter([
 	{
@@ -81,13 +85,39 @@ const router = createBrowserRouter([
 					</StudentRoute>
 				)
 			},
+
 			{
 				path: 'add-class',
-				element: <AddClass />
+				element: (
+					<InstructorRoute>
+						<AddClass />
+					</InstructorRoute>
+				)
 			},
 			{
 				path: 'my-classes',
-				element: <MyClasses />
+				element: (
+					<InstructorRoute>
+						<MyClasses />
+					</InstructorRoute>
+				)
+			},
+			{
+				path: 'my-classes/update/:id',
+				element: (
+					<InstructorRoute>
+						<UpdateClass />
+					</InstructorRoute>
+				),
+				loader: ({ params }) => axios.get(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
+			},
+			{
+				path: 'manage-users',
+				element: <ManageUsers />
+			},
+			{
+				path: 'manage-classes',
+				element: <ManageClasses />
 			}
 		]
 	}

@@ -1,18 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useEffect } from 'react';
 import Loader from '../../../components/Loader/Loader';
 import Empty from '../../../components/Empty';
-import MyClassesRow from './MyClassesRow';
-import { useContext } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
+import ClassRow from './ClassRow';
 
-const MyClasses = () => {
-	const { user } = useContext(AuthContext);
-	const { data: allClasses = [], isLoading } = useQuery({
+const ManageClasses = () => {
+	useEffect(() => {
+		// scroll to top of page
+		window.scrollTo(0, 0);
+		document.title = 'Manage Classes | SpeakSmart';
+	}, []);
+
+	const { data: allClasses = [], isLoading, refetch } = useQuery({
 		queryKey: ['all-classes'],
-		enabled: !!user,
 		queryFn: async () => {
-			const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/instructor-classes/${user?.email}`);
+			const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/classes?status=all`);
 			return res.data;
 		}
 	});
@@ -22,7 +25,7 @@ const MyClasses = () => {
 			{isLoading ? (
 				<Loader />
 			) : allClasses.length === 0 && Array.isArray(allClasses) ? (
-				<Empty title='Add Classes' path='/dashboard/add-class' />
+				<Empty title='Home' path='/' />
 			) : (
 				<div className='mx-6'>
 					<h1 className='text-2xl md:text-4xl text-gray-700 font-bold text-center my-6'>All Payments</h1>
@@ -33,14 +36,15 @@ const MyClasses = () => {
 								<tr>
 									<th>#</th>
 									<th>Class</th>
-									<th>Enrolled Students</th>
+									<th>Instructor</th>
+									<th>Available Seats</th>
 									<th>Status</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								{allClasses.map((singleClass, i) => (
-									<MyClassesRow key={singleClass._id} singleClass={singleClass} i={i} />
+									<ClassRow key={singleClass._id} singleClass={singleClass} i={i} refetch={refetch} />
 								))}
 							</tbody>
 						</table>
@@ -51,4 +55,4 @@ const MyClasses = () => {
 	);
 };
 
-export default MyClasses;
+export default ManageClasses;

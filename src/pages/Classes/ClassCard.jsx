@@ -60,7 +60,7 @@ const ClassCard = ({ singleClass }) => {
 			}`}>
 			<figure>
 				<img
-					className='group-hover:scale-105 duration-150 lg:h-2/3 lg:pl-8 w-full object-cover border-b'
+					className='group-hover:scale-105 duration-150 lg:h-[250px] lg:pl-8 w-full object-cover border-b'
 					src={image}
 					alt={className}
 				/>

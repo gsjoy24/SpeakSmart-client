@@ -1,6 +1,7 @@
 import { FaCheckCircle, FaClock, FaUserAlt } from 'react-icons/fa';
 import { RxCrossCircled } from 'react-icons/rx';
 import FeedbackModal from './FeedbackModal';
+import { Link } from 'react-router-dom';
 const MyClassesRow = ({ singleClass, i }) => {
 	return (
 		<tr>
@@ -43,16 +44,17 @@ const MyClassesRow = ({ singleClass, i }) => {
 				</span>
 			</td>
 			<td>
-				{singleClass?.status === 'denied' ? (
+				{singleClass?.feedback ? (
 					<>
 						<FeedbackModal feedback={singleClass?.feedback} />
 						<button onClick={() => window.my_modal_3.showModal()} className='btn btn-sm bg-red-300 hover:bg-red-400 '>
-							{' '}
-							see feedback
+							feedback
 						</button>
 					</>
 				) : (
-					<button className='btn btn-sm bg-[#8de4af] hover:bg-[#61cc8a]'>update</button>
+					<Link to={`update/${singleClass._id}`} className='btn btn-sm bg-[#8de4af] hover:bg-[#61cc8a]'>
+						update
+					</Link>
 				)}
 			</td>
 		</tr>
@@ -60,4 +62,3 @@ const MyClassesRow = ({ singleClass, i }) => {
 };
 
 export default MyClassesRow;
-<button className='btn'></button>;

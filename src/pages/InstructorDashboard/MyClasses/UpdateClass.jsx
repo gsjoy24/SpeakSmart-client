@@ -1,42 +1,36 @@
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import SectionHeading from '../../../components/SectionHeading';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import SectionHeading from '../../../components/SectionHeading';
 import { AuthContext } from '../../../Providers/AuthProvider';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
-import { toast } from 'react-hot-toast';
 import { GiSpinningBlades } from 'react-icons/gi';
-import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
-const AddClass = () => {
+const UpdateClass = () => {
 	const { user } = useContext(AuthContext);
+	const { data: singleClass } = useLoaderData();
 	const [axiosSecure] = useAxiosSecure();
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
-		document.title = 'Add a Class | SpeakSmart';
+		document.title = 'update | SpeakSmart';
 	}, []);
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
-
 	const onSubmit = (formData) => {
 		setLoading(true);
-		const newClass = {
-			...formData,
-			instructor: user?.displayName,
-			instructorEmail: user?.email,
-			enrolledStudents: 0,
-			status: 'pending'
-		};
-		
 		if (user && user?.email) {
-			axiosSecure.post('/classes', newClass).then((res) => {
-				if (res.data.insertedId) {
-					toast.success('Class Added successfully!');
+			axiosSecure.put(`/classes/${singleClass?._id}`, formData).then((res) => {
+				if (res.data.modifiedCount > 0) {
+					toast.success('Class updated successfully!');
 					setLoading(false);
 					navigate('/dashboard/my-classes');
 				}
@@ -45,32 +39,8 @@ const AddClass = () => {
 	};
 	return (
 		<div>
-			<SectionHeading heading='Add a Class' />
+			<SectionHeading heading={`Update ${singleClass?.className}`} />
 			<form onSubmit={handleSubmit(onSubmit)} className='w-full p-3 space-y-3 max-w-3xl mx-auto mb-12'>
-				{/* instructor info */}
-				<div className='flex flex-col sm:flex-row gap-4 align-baseline'>
-					{/* 1 */}
-					<div className='w-full'>
-						<div className='text-sm ml-2 mb-3'>Instructor Name</div>
-						<input
-							type='text'
-							defaultValue={user?.displayName}
-							disabled
-							className='input input-bordered w-full mx-auto block'
-						/>
-					</div>
-					{/* 2 */}
-					<div className='w-full'>
-						<div className='text-sm ml-2 mb-3'>Instructor Email</div>
-						<input
-							type='email'
-							defaultValue={user?.email}
-							disabled
-							className='input input-bordered w-full mx-auto block'
-						/>
-					</div>
-				</div>
-
 				<div className='flex flex-col sm:flex-row gap-4 align-baseline'>
 					{/* class name */}
 					<div className='w-full'>
@@ -78,6 +48,7 @@ const AddClass = () => {
 						<input
 							type='text'
 							placeholder='Class Name'
+							defaultValue={singleClass?.className}
 							className='input input-bordered w-full mx-auto block'
 							{...register('className', { required: true })}
 						/>
@@ -94,6 +65,7 @@ const AddClass = () => {
 						<input
 							type='text'
 							placeholder='Image URL'
+							defaultValue={singleClass?.image}
 							className='input input-bordered w-full mx-auto block'
 							{...register('image', { required: true })}
 						/>
@@ -113,6 +85,7 @@ const AddClass = () => {
 						<input
 							type='text'
 							placeholder='Platform'
+							defaultValue={singleClass?.platform}
 							className='input input-bordered w-full mx-auto block'
 							{...register('platform', { required: true })}
 						/>
@@ -128,6 +101,7 @@ const AddClass = () => {
 						<input
 							type='text'
 							placeholder='Duration per day (60 minutes)'
+							defaultValue={singleClass?.duration}
 							className='input input-bordered w-full mx-auto block'
 							{...register('duration', { required: true })}
 						/>
@@ -147,6 +121,7 @@ const AddClass = () => {
 						<input
 							type='text'
 							placeholder='Orientation (dd/mm/yyyy)'
+							defaultValue={singleClass?.orientation}
 							className='input input-bordered w-full mx-auto block'
 							{...register('orientation', { required: true })}
 						/>
@@ -162,6 +137,7 @@ const AddClass = () => {
 						<input
 							type='number'
 							placeholder='Price'
+							defaultValue={singleClass?.price}
 							className='input input-bordered w-full mx-auto block'
 							{...register('price', { required: true })}
 						/>
@@ -178,6 +154,7 @@ const AddClass = () => {
 					<input
 						type='number'
 						placeholder='Available Seats'
+						defaultValue={singleClass?.availableSeats}
 						className='input input-bordered w-full mx-auto block'
 						{...register('availableSeats', { required: true })}
 					/>
@@ -193,6 +170,7 @@ const AddClass = () => {
 					<textarea
 						type='number'
 						placeholder='Requirements'
+						defaultValue={singleClass?.requirements}
 						className='input input-bordered w-full mx-auto block pt-2'
 						{...register('requirements', { required: true })}
 					/>
@@ -208,6 +186,7 @@ const AddClass = () => {
 					<textarea
 						type='number'
 						placeholder='Description'
+						defaultValue={singleClass?.description}
 						className='input input-bordered w-full mx-auto block pt-2'
 						{...register('description', { required: true })}
 					/>
@@ -228,7 +207,7 @@ const AddClass = () => {
 					<button
 						type='submit'
 						className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
-						Add
+						Update
 					</button>
 				)}
 			</form>
@@ -236,4 +215,4 @@ const AddClass = () => {
 	);
 };
 
-export default AddClass;
+export default UpdateClass;
