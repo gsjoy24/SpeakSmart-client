@@ -1,13 +1,78 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { CgMenuRight } from 'react-icons/cg';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const StudentDashboard = () => {
+	const { role } = useContext(AuthContext);
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
 		document.title = 'Dashboard | SpeakSmart';
 	}, []);
+	const studentsNav = (
+		<>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='my-selected-classes'>
+					My Selected Classes
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='my-enrolled-classes'>
+					My Enrolled Classes
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='payment-history'>
+					Payment History
+				</NavLink>
+			</li>
+		</>
+	);
+
+	const instructorsNav = (
+		<>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='add-class'>
+					Add a Class
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='my-classes'>
+					My Classes
+				</NavLink>
+			</li>
+		</>
+	);
+	const adminsNav = (
+		<>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='manage-classes'>
+					Manage Classes
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					to='manage-users'>
+					Manage Users
+				</NavLink>
+			</li>
+		</>
+	);
+
 	return (
 		<div>
 			<div className='drawer lg:drawer-open duration-0'>
@@ -21,32 +86,13 @@ const StudentDashboard = () => {
 					<ul className='menu p-4 w-80 h-full bg-base-200 text-base-content space-y-5 text-lg font-semibold duration-0'>
 						{/* Sidebar content here */}
 						<li>
-							{/* 2 */}
 							<Link to='../' className='text-2xl font-bold bg-[#8de4af] flex justify-center'>
 								SpeakSmart
 							</Link>
 						</li>
-						<li>
-							<NavLink
-								className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
-								to='my-selected-classes'>
-								My Selected Classes
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
-								to='my-enrolled-classes'>
-								My Enrolled Classes
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
-								to='payment-history'>
-								Payment History
-							</NavLink>
-						</li>
+						{role === 'student' && studentsNav}
+						{role === 'instructor' && instructorsNav}
+						{role === 'admin' && adminsNav}
 					</ul>
 				</div>
 			</div>

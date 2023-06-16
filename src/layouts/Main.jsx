@@ -13,9 +13,7 @@ const Main = () => {
 			</NavLink>
 
 			{user && (
-				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')}
-					to='/dashboard/my-selected-classes'>
+				<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/dashboard'>
 					Dashboard
 				</NavLink>
 			)}

@@ -17,7 +17,7 @@ const ClassCard = ({ singleClass }) => {
 		instructor,
 		orientation,
 		duration,
-		location,
+		platform,
 		price,
 		availableSlots,
 		instructorEmail
@@ -101,7 +101,7 @@ const ClassCard = ({ singleClass }) => {
 					<p className='flex items-center gap-3'>
 						<MdLocationOn size={24} />
 						<span>
-							<span className='font-bold'>Platform</span> : {location}
+							<span className='font-bold'>Platform</span> : {platform}
 						</span>
 					</p>
 				</div>

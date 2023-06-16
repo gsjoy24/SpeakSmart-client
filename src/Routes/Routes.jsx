@@ -13,6 +13,8 @@ import axios from 'axios';
 import Payments from '../pages/StudentDashboard/Payments/Payments';
 import MyEnrolledClasses from '../pages/StudentDashboard/MyEnrolledClasses/MyEnrolledClasses';
 import StudentRoute from './StudentRoute/StudentRoute';
+import AddClass from '../pages/InstructorDashboard/AddClass/AddClass';
+import MyClasses from '../pages/InstructorDashboard/MyClasses/MyClasses';
 
 const router = createBrowserRouter([
 	{
@@ -78,6 +80,14 @@ const router = createBrowserRouter([
 						<Payments />
 					</StudentRoute>
 				)
+			},
+			{
+				path: 'add-class',
+				element: <AddClass />
+			},
+			{
+				path: 'my-classes',
+				element: <MyClasses />
 			}
 		]
 	}
