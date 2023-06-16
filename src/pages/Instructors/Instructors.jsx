@@ -19,7 +19,6 @@ const Instructors = () => {
 		}
 	});
 
-	console.log(allInstructors);
 	return (
 		<div>
 			<div className='relative '>

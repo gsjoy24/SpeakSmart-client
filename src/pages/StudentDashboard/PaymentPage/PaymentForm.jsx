@@ -5,6 +5,7 @@ import { BsFillExclamationCircleFill } from 'react-icons/bs';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { GiSpinningBlades } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentForm = ({ price, selectedClass }) => {
 	const { user } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const PaymentForm = ({ price, selectedClass }) => {
 	const [axiosSecure] = useAxiosSecure();
 	const [clientSecret, setClientSecret] = useState('');
 	const [processing, setProcessing] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		axiosSecure.post('/create-payment-intent', { price }).then((res) => {
@@ -61,7 +63,6 @@ const PaymentForm = ({ price, selectedClass }) => {
 			setCardErr(confirmErr.message);
 		}
 
-		setProcessing(false);
 		if (paymentIntent.status === 'succeeded') {
 			toast.success('Payment successful. Enjoy your class!');
 			// add the paid class to the enrolled collection and remove it from the selected collection
@@ -105,6 +106,8 @@ const PaymentForm = ({ price, selectedClass }) => {
 				if (enrolledClass) {
 					axiosSecure.patch(`/classes/${selectedClass?.classId}`, updatedInfo).then((patchResponse) => {
 						console.log(patchResponse.data);
+						setProcessing(false);
+						navigate('/dashboard/my-enrolled-classes');
 					});
 				}
 			});
