@@ -11,6 +11,7 @@ const Classes = () => {
 		window.scrollTo(0, 0);
 		document.title = 'Classes | SpeakSmart';
 	}, []);
+
 	const { data: approvedClasses = [] } = useQuery({
 		queryKey: ['approvedClasses'],
 		queryFn: async () => {

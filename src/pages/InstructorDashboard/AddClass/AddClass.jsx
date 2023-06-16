@@ -5,12 +5,13 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { toast } from 'react-hot-toast';
 import { GiSpinningBlades } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 
 const AddClass = () => {
 	const { user } = useContext(AuthContext);
 	const [axiosSecure] = useAxiosSecure();
 	const [loading, setLoading] = useState(false);
-	// const [error, setError] = useState('');
+	const navigate = useNavigate();
 	useEffect(() => {
 		// scroll to top of page
 		window.scrollTo(0, 0);
@@ -38,6 +39,7 @@ const AddClass = () => {
 				if (res.data.insertedId) {
 					toast.success('Class Added successfully!');
 					setLoading(false);
+					navigate('/dashboard/my-classes');
 				}
 			});
 		}

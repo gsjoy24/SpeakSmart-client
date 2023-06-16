@@ -19,7 +19,7 @@ const ClassCard = ({ singleClass }) => {
 		duration,
 		platform,
 		price,
-		availableSlots,
+		availableSeats,
 		instructorEmail
 	} = singleClass;
 
@@ -56,7 +56,7 @@ const ClassCard = ({ singleClass }) => {
 	return (
 		<div
 			className={`card lg:card-side shadow-xl mx-auto duration-150 hover:bg-[#45ff455d] group first-line:border  ${
-				!singleClass?.availableSlots && 'bg-red-200 hover:bg-red-300'
+				!singleClass?.availableSeats && 'bg-red-200 hover:bg-red-300'
 			}`}>
 			<figure>
 				<img
@@ -110,7 +110,7 @@ const ClassCard = ({ singleClass }) => {
 					<p className='flex items-center gap-3'>
 						<MdChair size={23} />
 						<span>
-							<span className='font-bold'>Available Seats </span>: {availableSlots}
+							<span className='font-bold'>Available Seats </span>: {availableSeats}
 						</span>
 					</p>
 					<p className='flex items-center gap-3'>
@@ -129,7 +129,7 @@ const ClassCard = ({ singleClass }) => {
 			</div>
 			<button
 				onClick={selectClass}
-				disabled={!availableSlots || role === 'admin' || role === 'instructor'}
+				disabled={!availableSeats || role === 'admin' || role === 'instructor'}
 				className='btn m-3 bg-[#8de4af] hover:bg-[#62dc91]'>
 				select
 			</button>
