@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { Bounce } from 'react-awesome-reveal';
 
 const ClassRow = ({ singleClass, i, refetch }) => {
 	const [axiosSecure] = useAxiosSecure();
@@ -63,74 +64,71 @@ const ClassRow = ({ singleClass, i, refetch }) => {
 		}
 	};
 	return (
-		<>
-			<tr>
-				<th>{i + 1}</th>
-
-				<td>
-					<div className='flex items-center space-x-3'>
-						<div className='avatar'>
-							<div className='mask mask-squircle w-12 h-12'>
-								<img src={singleClass?.image} alt={singleClass?.className} />
-							</div>
+		<tr>
+			<th>{i + 1}</th>
+			<td>
+				<div className='flex items-center space-x-3'>
+					<Bounce className='avatar'>
+						<div className='mask mask-squircle w-12 h-12'>
+							<img src={singleClass?.image} alt={singleClass?.className} />
 						</div>
-						<div>
-							<div className='font-bold'>{singleClass.className}</div>
-							<div className='text-sm opacity-50'>Price: $ {singleClass?.price}</div>
-						</div>
+					</Bounce>
+					<div>
+						<div className='font-bold'>{singleClass.className}</div>
+						<div className='text-sm opacity-50'>Price: $ {singleClass?.price}</div>
 					</div>
-				</td>
-				<td className='flex flex-col gap-2'>
-					<span className='ml-2 flex items-center gap-2'>
-						<FaUserTie />
-						{singleClass?.instructor}
-					</span>
-					<span className='badge badge-ghost badge-sm flex items-center gap-2 p-2'>
-						<FaEnvelope /> {singleClass?.instructorEmail}
-					</span>
-				</td>
-				<td>
-					<span className='flex items-center gap-2'>
-						<FaUserAlt /> <span>{singleClass?.availableSeats}</span>
-					</span>
-				</td>
-				<td
-					className={
-						singleClass?.status === 'approved'
-							? 'text-green-600'
-							: singleClass?.status === 'pending'
-							? 'text-yellow-500'
-							: 'text-red-600'
-					}>
-					<span className='flex items-center justify-center gap-2'>
-						{singleClass?.status === 'approved' ? (
-							<FaCheckCircle size={16} />
-						) : singleClass?.status === 'pending' ? (
-							<FaClock size={16} />
-						) : (
-							<RxCrossCircled size={18} />
-						)}
-						<span>{singleClass?.status}</span>
-					</span>
-				</td>
-				<td className='flex flex-col gap-2'>
+				</div>
+			</td>
+			<td className='flex flex-col gap-2'>
+				<span className='ml-2 flex items-center gap-2'>
+					<FaUserTie />
+					{singleClass?.instructor}
+				</span>
+				<span className='badge badge-ghost badge-sm flex items-center gap-2 p-2'>
+					<FaEnvelope /> {singleClass?.instructorEmail}
+				</span>
+			</td>
+			<td>
+				<span className='flex items-center gap-2'>
+					<FaUserAlt /> <span>{singleClass?.availableSeats}</span>
+				</span>
+			</td>
+			<td
+				className={
+					singleClass?.status === 'approved'
+						? 'text-green-600'
+						: singleClass?.status === 'pending'
+						? 'text-yellow-500'
+						: 'text-red-600'
+				}>
+				<span className='flex items-center justify-center gap-2'>
+					{singleClass?.status === 'approved' ? (
+						<FaCheckCircle size={16} />
+					) : singleClass?.status === 'pending' ? (
+						<FaClock size={16} />
+					) : (
+						<RxCrossCircled size={18} />
+					)}
+					<span>{singleClass?.status}</span>
+				</span>
+			</td>
+			<td className='flex flex-col gap-2'>
+				<button
+					onClick={() => approveClass(singleClass?._id)}
+					disabled={singleClass?.checked || approvalLoading}
+					className='btn btn-xs bg-[#8de4af] hover:bg-[#49d17d]'>
+					{approvalLoading ? 'approving' : 'approve'}
+				</button>
+				<>
 					<button
-						onClick={() => approveClass(singleClass?._id)}
-						disabled={singleClass?.checked || approvalLoading}
-						className='btn btn-xs bg-[#8de4af] hover:bg-[#49d17d]'>
-						{approvalLoading ? 'approving' : 'approve'}
+						onClick={() => denyClass(singleClass?._id)}
+						disabled={singleClass?.checked}
+						className='btn btn-xs btn-error'>
+						deny
 					</button>
-					<>
-						<button
-							onClick={() => denyClass(singleClass?._id)}
-							disabled={singleClass?.checked}
-							className='btn btn-xs btn-error'>
-							deny
-						</button>
-					</>
-				</td>
-			</tr>
-		</>
+				</>
+			</td>
+		</tr>
 	);
 };
 

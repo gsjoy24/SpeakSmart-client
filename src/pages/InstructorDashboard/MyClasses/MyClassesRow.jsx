@@ -52,7 +52,7 @@ const MyClassesRow = ({ singleClass, i }) => {
 						</button>
 					</>
 				) : (
-					<Link to={`update/${singleClass._id}`} className='btn btn-sm bg-[#8de4af] hover:bg-[#61cc8a]'>
+					<Link to={`update/${singleClass?._id}`} className='btn btn-sm bg-[#8de4af] hover:bg-[#61cc8a]'>
 						update
 					</Link>
 				)}

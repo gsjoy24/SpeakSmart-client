@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { CgMenuRight } from 'react-icons/cg';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Slide } from 'react-awesome-reveal';
 
 const StudentDashboard = () => {
 	const { role } = useContext(AuthContext);
@@ -79,7 +80,9 @@ const StudentDashboard = () => {
 				<input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
 				<div className='drawer-content flex flex-col overflow-hidden'>
 					{/* Page content here */}
-					<Outlet />
+					<Slide direction='right'>
+						<Outlet />
+					</Slide>
 				</div>
 				<div className='drawer-side'>
 					<label htmlFor='my-drawer-2' className='drawer-overlay'></label>
@@ -87,7 +90,7 @@ const StudentDashboard = () => {
 						{/* Sidebar content here */}
 						<li>
 							<Link to='../' className='text-2xl font-bold bg-[#8de4af] flex justify-center'>
-								SpeakSmart
+								<Slide>SpeakSmart</Slide>
 							</Link>
 						</li>
 						{role === 'student' && studentsNav}

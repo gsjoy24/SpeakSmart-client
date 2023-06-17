@@ -2,9 +2,10 @@ import { NavLink, Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Zoom } from 'react-awesome-reveal';
 
 const Main = () => {
-	const { user, logOutUser } = useContext(AuthContext);
+	const { user, logOutUser, role } = useContext(AuthContext);
 
 	const navItems = (
 		<>
@@ -13,7 +14,11 @@ const Main = () => {
 			</NavLink>
 
 			{user && (
-				<NavLink className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')} to='/dashboard'>
+				<NavLink
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-2 rounded-md' : 'p-2')}
+					to={`/dashboard/${
+						role === 'admin' ? 'manage-classes' : role === 'instructor' ? 'add-class' : 'my-selected-classes'
+					}`}>
 					Dashboard
 				</NavLink>
 			)}
@@ -60,7 +65,9 @@ const Main = () => {
 							</svg>
 						</label>
 					</div>
-					<div className='flex-1 px-2 mx-2 text-xl font-bold'>SpeakSmart</div>
+					<div className='flex-1 px-2 mx-2 text-xl font-bold'>
+						<Zoom>SpeakSmart</Zoom>
+					</div>
 					<div className='flex-none hidden lg:block '>
 						<ul className='menu menu-horizontal items-center gap-4 font-semibold'>
 							{/* Navbar menu content here */}

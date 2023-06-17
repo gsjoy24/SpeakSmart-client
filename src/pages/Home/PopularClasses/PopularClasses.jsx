@@ -3,6 +3,7 @@ import axios from 'axios';
 import DisplayCard from './DisplayCard';
 import SectionHeading from '../../../components/SectionHeading';
 
+
 const PopularClasses = () => {
 	const { data: popularClasses = [] } = useQuery({
 		queryKey: ['popular-classes'],

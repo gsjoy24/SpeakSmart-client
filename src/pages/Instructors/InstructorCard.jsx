@@ -1,4 +1,4 @@
-import { FaUserTie, FaEnvelope, FaChalkboardTeacher } from 'react-icons/fa';
+import { FaUserTie, FaEnvelope } from 'react-icons/fa';
 
 const InstructorCard = ({ instructor }) => {
 	return (
@@ -12,9 +12,6 @@ const InstructorCard = ({ instructor }) => {
 				</h2>
 				<p className='flex items-center gap-3'>
 					<FaEnvelope size={20} /> Email : {instructor?.email}
-				</p>
-				<p className='flex items-center gap-3'>
-					<FaChalkboardTeacher size={23} /> Taking Classes : {instructor?.classes}
 				</p>
 			</div>
 		</div>
