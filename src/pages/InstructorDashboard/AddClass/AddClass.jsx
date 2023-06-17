@@ -25,14 +25,17 @@ const AddClass = () => {
 
 	const onSubmit = (formData) => {
 		setLoading(true);
+		const { price, availableSeats, ...classData } = formData;
 		const newClass = {
-			...formData,
+			...classData,
 			instructor: user?.displayName,
 			instructorEmail: user?.email,
+			availableSeats: parseFloat(formData?.availableSeats),
+			price: parseFloat(formData?.price),
 			enrolledStudents: 0,
 			status: 'pending'
 		};
-		
+
 		if (user && user?.email) {
 			axiosSecure.post('/classes', newClass).then((res) => {
 				if (res.data.insertedId) {

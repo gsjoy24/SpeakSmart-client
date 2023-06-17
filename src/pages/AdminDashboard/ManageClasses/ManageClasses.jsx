@@ -12,7 +12,11 @@ const ManageClasses = () => {
 		document.title = 'Manage Classes | SpeakSmart';
 	}, []);
 
-	const { data: allClasses = [], isLoading, refetch } = useQuery({
+	const {
+		data: allClasses = [],
+		isLoading,
+		refetch
+	} = useQuery({
 		queryKey: ['all-classes'],
 		queryFn: async () => {
 			const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/classes?status=all`);
