@@ -19,6 +19,7 @@ import UpdateClass from '../pages/InstructorDashboard/MyClasses/UpdateClass';
 import InstructorRoute from './InstructorRoute/InstructorRoute';
 import ManageUsers from '../pages/AdminDashboard/ManageUsers/ManageUsers';
 import ManageClasses from '../pages/AdminDashboard/ManageClasses/ManageClasses';
+import AdminRoute from './AdminRoute/AdminRoute';
 
 const router = createBrowserRouter([
 	{
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
 						<PaymentPage />
 					</StudentRoute>
 				),
-				loader: ({ params }) => axios.get(`http://localhost:5000/selected-class/${params.id}`)
+				loader: ({ params }) => axios.get(`${import.meta.env.VITE_SERVER_URL}/selected-class/${params.id}`)
 			},
 			{
 				path: 'my-enrolled-classes',
@@ -113,11 +114,19 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'manage-users',
-				element: <ManageUsers />
+				element: (
+					<AdminRoute>
+						<ManageUsers />
+					</AdminRoute>
+				)
 			},
 			{
 				path: 'manage-classes',
-				element: <ManageClasses />
+				element: (
+					<AdminRoute>
+						<ManageClasses />
+					</AdminRoute>
+				)
 			}
 		]
 	}

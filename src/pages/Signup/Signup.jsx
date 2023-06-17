@@ -8,6 +8,7 @@ import GoogleLogin from '../../components/GoogleLogin';
 import { toast } from 'react-hot-toast';
 import { saveUser } from '../../apis/auth';
 import { GiSpinningBlades } from 'react-icons/gi';
+import { Bounce } from 'react-awesome-reveal';
 
 const Signup = () => {
 	useEffect(() => {
@@ -63,9 +64,9 @@ const Signup = () => {
 
 	return (
 		<div className='lg:flex justify-center h-full items-center py-12'>
-			<div className='w-full lg:w-1/2'>
+			<Bounce className='w-full lg:w-1/2'>
 				<img className='w-full max-w-xl mx-auto' src={authImg} alt='signup' />
-			</div>
+			</Bounce>
 
 			{/* form */}
 			<div className='w-full lg:w-1/2'>

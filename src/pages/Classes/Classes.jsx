@@ -4,6 +4,7 @@ import bgImg from '../../assets/classes.jpg';
 import SectionHeading from '../../components/SectionHeading';
 import ClassCard from './ClassCard';
 import { useEffect } from 'react';
+import { Zoom } from 'react-awesome-reveal';
 
 const Classes = () => {
 	useEffect(() => {
@@ -27,7 +28,7 @@ const Classes = () => {
 				<h1
 					className='text-4xl sm:text-6xl font-bold absolute top-1/2 -translate-y-1/2 left-10 md:left-20 text-[#8DE4AF] uppercase'
 					style={{ textShadow: ' 2px 2px 10px black' }}>
-					Classes
+					<Zoom>Classes</Zoom>
 				</h1>
 			</div>
 			<SectionHeading

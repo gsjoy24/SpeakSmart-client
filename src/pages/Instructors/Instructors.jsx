@@ -4,7 +4,7 @@ import bgImg from '../../assets/instructors.jpg';
 import SectionHeading from '../../components/SectionHeading';
 import InstructorCard from './InstructorCard';
 import { useEffect } from 'react';
-
+import { Zoom } from 'react-awesome-reveal';
 const Instructors = () => {
 	useEffect(() => {
 		// scroll to top of page
@@ -26,7 +26,7 @@ const Instructors = () => {
 				<h1
 					className='text-4xl sm:text-6xl font-bold absolute top-1/2 -translate-y-1/2 left-10 md:left-20 text-[#8DE4AF] uppercase'
 					style={{ textShadow: ' 2px 2px 10px black' }}>
-					Instructors
+					<Zoom>Instructors</Zoom>
 				</h1>
 			</div>
 			<SectionHeading

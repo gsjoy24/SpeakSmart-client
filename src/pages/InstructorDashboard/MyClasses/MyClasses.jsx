@@ -1,18 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import Loader from '../../../components/Loader/Loader';
 import Empty from '../../../components/Empty';
 import MyClassesRow from './MyClassesRow';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const MyClasses = () => {
+	const [axiosSecure] = useAxiosSecure();
 	const { user } = useContext(AuthContext);
 	const { data: allClasses = [], isLoading } = useQuery({
 		queryKey: ['all-classes'],
 		enabled: !!user,
 		queryFn: async () => {
-			const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/instructor-classes/${user?.email}`);
+			const res = await axiosSecure.get(`${import.meta.env.VITE_SERVER_URL}/instructor-classes/${user?.email}`);
 			return res.data;
 		}
 	});
