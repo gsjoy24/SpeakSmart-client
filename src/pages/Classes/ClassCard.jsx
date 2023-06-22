@@ -57,9 +57,9 @@ const ClassCard = ({ singleClass }) => {
 	return (
 		<Fade>
 			<div
-				className={`card lg:card-side shadow-xl mx-auto duration-150 hover:bg-[#45ff455d] group first-line:border  ${
-					!singleClass?.availableSeats && 'bg-red-200 hover:bg-red-300'
-				}`}>
+				className={`card lg:card-side shadow-xl mx-auto duration-150 group first-line:border  ${
+					singleClass?.availableSeats ? 'hover:bg-[#45ff455d] dark:hover:bg-[#252b31]': 'bg-red-200 hover:bg-red-300 dark:bg-red-950 dark:hover:bg-red-900'
+				} `}>
 				<figure>
 					<img
 						className='group-hover:scale-105 duration-150 lg:h-[250px] lg:pl-8 w-full object-cover border-b'

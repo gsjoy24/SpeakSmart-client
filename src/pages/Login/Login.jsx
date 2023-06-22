@@ -52,7 +52,7 @@ const Login = () => {
 			{/* form */}
 			<div className='w-full lg:w-1/2'>
 				<form onSubmit={handleSubmit(onSubmit)} className='w-full p-3 space-y-3 max-w-md mx-auto'>
-					<span className='text-2xl font-bold text-gray-900 uppercase text-center block mb-3'>Log In now</span>
+					<span className='text-2xl font-bold text-gray-900 dark:text-gray-300 uppercase text-center block mb-3'>Log In now</span>
 					<input
 						type='email'
 						placeholder='Email Address'
@@ -98,13 +98,13 @@ const Login = () => {
 					{loading ? (
 						<button
 							type='button'
-							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							className='btn btn-block bg-[#8de4af] dark:bg-gray-700 flex justify-center items-center'>
 							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
 						</button>
 					) : (
 						<button
 							type='submit'
-							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							className='btn btn-block bg-[#8de4af] dark:bg-gray-700 hover:bg-[#54cc82] dark:hover:bg-gray-800 flex justify-center items-center te'>
 							login
 						</button>
 					)}

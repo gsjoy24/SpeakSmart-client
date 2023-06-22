@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 * {
-	transition: 250ms linear;
-	-webkit-transition: 250ms linear;
-	-moz-transition: 250ms linear;
-	-ms-transition: 250ms linear;
-	-o-transition: 250ms linear;
+	transition: 100ms linear;
+	-webkit-transition: 100ms linear;
+	-moz-transition: 100ms linear;
+	-ms-transition: 100ms linear;
+	-o-transition: 100ms linear;
 }

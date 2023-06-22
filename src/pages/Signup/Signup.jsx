@@ -216,13 +216,13 @@ const Signup = () => {
 					{loading ? (
 						<button
 							type='button'
-							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							className='btn btn-block bg-[#8de4af] dark:bg-gray-700 flex justify-center items-center'>
 							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
 						</button>
 					) : (
 						<button
 							type='submit'
-							className='btn btn-block bg-[#8de4af] hover:bg-[#54cc82] flex justify-center items-center'>
+							className='btn btn-block  bg-[#8de4af] dark:bg-gray-700 hover:bg-[#54cc82] dark:hover:bg-gray-800 flex justify-center items-center'>
 							sign up
 						</button>
 					)}

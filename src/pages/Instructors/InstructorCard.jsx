@@ -3,10 +3,10 @@ import { Bounce } from 'react-awesome-reveal';
 
 const InstructorCard = ({ instructor }) => {
 	return (
-		<div className='card max-w-[320px] shadow-xl mx-auto hover:scale-105 duration-150 hover:bg-[#45ff455d] group first-line:border'>
+		<div className='card max-w-[320px] shadow-xl mx-auto hover:scale-105 duration-150 hover:bg-[#45ff455d] dark:hover:bg-[#252b31] group first-line:border'>
 			<figure>
 				<Bounce>
-					<img className='group-hover:scale-105 duration-150' src={instructor?.photoURL} alt={instructor?.name} />
+					<img className='group-hover:scale-105 duration-150 h-72' src={instructor?.photoURL} alt={instructor?.name} />
 				</Bounce>
 			</figure>
 			<div className='card-body'>
@@ -14,7 +14,7 @@ const InstructorCard = ({ instructor }) => {
 					<FaUserTie /> {instructor?.name}
 				</h2>
 				<p className='flex items-center gap-3'>
-					<FaEnvelope size={20} /> Email : {instructor?.email}
+					<FaEnvelope size={20} /> {instructor?.email}
 				</p>
 			</div>
 		</div>

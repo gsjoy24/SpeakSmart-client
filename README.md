@@ -1,6 +1,6 @@
 # SpeakSmart
 
-🚀 [Check Live](https://rhythmroam24.web.app/)
+🚀 [Check Live](https://speaksmart24.web.app/)
 
 ## 🌟 Technologies in this project \_\_
 
@@ -23,4 +23,4 @@
 - Theme Change
 - Sign up with Google
 - Different user roles
-- Animation
+- Animations

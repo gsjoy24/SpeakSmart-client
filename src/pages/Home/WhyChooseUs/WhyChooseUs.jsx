@@ -10,9 +10,9 @@ const WhyChooseUs = () => {
 			<div className='grid grid-cols-1 lg:grid-cols-2 mt-16 gap-8'>
 				{/* 1 */}
 				<Flip>
-					<div className='mx-auto  px-6 py-12 text-center bg-[#bbffbb9f] shadow-lg rounded-3xl max-w-lg'>
+					<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
 						<GiTeacher size={50} className='mx-auto' />
-						<p className='text-xl font-bold  my-4'>Highly Skilled Instructors</p>
+						<p className='text-xl font-bold my-4'>Highly Skilled Instructors</p>
 						<p>
 							Benefit from our team of knowledgeable and experienced instructors who are committed to helping you
 							achieve your language learning goals.
@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
 					</div>
 				</Flip>
 				{/* 2 */}
-				<div className='mx-auto  px-6 py-12 text-center bg-[#bbffbb9f] shadow-lg rounded-3xl max-w-lg'>
+				<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
 					<FaPuzzlePiece size={50} className='mx-auto' />
 					<p className='text-xl font-bold  my-4'>Well-Structured Curriculum</p>
 					<p>
@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
 					</p>
 				</div>
 				{/* 3 */}
-				<div className='mx-auto  px-6 py-12 text-center bg-[#bbffbb9f] shadow-lg rounded-3xl max-w-lg'>
+				<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
 					<FaLaptopHouse size={50} className='mx-auto' />
 					<p className='text-xl font-bold  my-4'>Convenient Learning Options</p>
 					<p>
@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
 				</div>
 				{/* 4 */}
 				<Slide direction='right'>
-					<div className='mx-auto px-6 py-12 text-center bg-[#bbffbb9f] shadow-lg rounded-3xl max-w-lg'>
+					<div className='mx-auto px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
 						<GiLifeSupport size={50} className='mx-auto' />
 						<p className='text-xl font-bold  my-4'>Supportive Learning Environment</p>
 						<p>

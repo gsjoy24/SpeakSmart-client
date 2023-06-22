@@ -5,14 +5,14 @@ const DisplayCard = ({ SingleClass }) => {
 	return (
 		<Fade>
 			<div
-				className={`card max-w-[320px] h-full hover:scale-105 duration-150 hover:bg-[#45ff455d] ${
-					!SingleClass?.availableSeats && 'bg-red-200 hover:bg-red-300'
+				className={`card max-w-[320px] h-full hover:scale-105 duration-150 hover:bg-[#45ff455d] dark:hover:bg-[#252b31] ${
+					!SingleClass?.availableSeats && 'bg-red-200 hover:bg-red-300 dark:bg-red-950 dark:hover:bg-red-900'
 				} shadow-xl mx-auto`}>
 				<figure>
 					<img className='h-48 w-full object-cover' src={SingleClass?.image} alt={SingleClass?.className} />
 				</figure>
 				<div className='card-body text-sm'>
-					<h2 className='card-title mb-2'>
+					<h2 className='card-title mb-2 '>
 						<BsGlobeEuropeAfrica size={24} className='mr-2' /> {SingleClass?.className}
 					</h2>
 					<p className='flex items-center gap-3'>

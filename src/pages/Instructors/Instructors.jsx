@@ -22,7 +22,7 @@ const Instructors = () => {
 	return (
 		<div>
 			<div className='relative '>
-				<img className='h-44 md:h-72 w-full object-cover blur-sm' src={bgImg} alt='instructors' />
+				<img className='h-44 md:h-72 w-full object-cover blur-sm dark:brightness-50' src={bgImg} alt='instructors' />
 				<h1
 					className='text-4xl sm:text-6xl font-bold absolute top-1/2 -translate-y-1/2 left-10 md:left-20 text-[#8DE4AF] uppercase'
 					style={{ textShadow: ' 2px 2px 10px black' }}>
