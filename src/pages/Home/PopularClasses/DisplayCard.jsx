@@ -5,7 +5,7 @@ const DisplayCard = ({ SingleClass }) => {
 	return (
 		<Fade>
 			<div
-				className={`card max-w-[320px] h-full hover:scale-105 duration-150 hover:bg-[#45ff455d] dark:hover:bg-[#252b31] ${
+				className={`card max-w-[320px] h-full hover:scale-105 duration-150 hover:bg-gray-50 dark:hover:bg-[#252b31] ${
 					!SingleClass?.availableSeats && 'bg-red-200 hover:bg-red-300 dark:bg-red-950 dark:hover:bg-red-900'
 				} shadow-xl mx-auto`}>
 				<figure>

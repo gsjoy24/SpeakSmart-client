@@ -10,13 +10,13 @@ const Main = () => {
 
 	const navItems = (
 		<>
-			<NavLink className={({ isActive }) => (isActive ? `bg-[#dffae9] text-gray-700 p-2 rounded-md` : `p-2`)} to='/'>
+			<NavLink className={({ isActive }) => (isActive ? `bg-gray-300 text-gray-700 p-2 rounded-md` : `p-2`)} to='/'>
 				Home
 			</NavLink>
 
 			{user && (
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#dffae9] text-gray-700 p-2 rounded-md' : 'p-2')}
+					className=''
 					to={`/dashboard/${
 						role === 'admin' ? 'manage-classes' : role === 'instructor' ? 'add-class' : 'my-selected-classes'
 					}`}>
@@ -24,24 +24,24 @@ const Main = () => {
 				</NavLink>
 			)}
 			<NavLink
-				className={({ isActive }) => (isActive ? 'bg-[#dffae9] text-gray-700 p-2 rounded-md' : 'p-2')}
+				className={({ isActive }) => (isActive ? 'bg-gray-300 text-gray-700 p-2 rounded-md' : 'p-2')}
 				to='/instructors'>
 				Instructors
 			</NavLink>
 			<NavLink
-				className={({ isActive }) => (isActive ? 'bg-[#dffae9] text-gray-700 p-2 rounded-md' : 'p-2')}
+				className={({ isActive }) => (isActive ? 'bg-gray-300 text-gray-700 p-2 rounded-md' : 'p-2')}
 				to='/classes'>
 				Classes
 			</NavLink>
 			{!user && (
 				<>
 					<NavLink
-						className={({ isActive }) => (isActive ? 'bg-[#dffae9] text-gray-700 p-2 rounded-md' : 'p-2')}
+						className={({ isActive }) => (isActive ? 'bg-gray-300 text-gray-700 p-2 rounded-md' : 'p-2')}
 						to='/login'>
 						Login
 					</NavLink>
 					<NavLink
-						className={({ isActive }) => (isActive ? 'bg-[#dffae9] text-gray-700 p-2 rounded-md' : 'p-2')}
+						className={({ isActive }) => (isActive ? 'bg-gray-300 text-gray-700 p-2 rounded-md' : 'p-2')}
 						to='/signup'>
 						Sign up
 					</NavLink>
@@ -55,7 +55,7 @@ const Main = () => {
 					<img className='w-10 h-10 rounded-full mx-auto' src={user?.photoURL} alt={user.displayName} />
 				</>
 			)}
-			<ThemeSwitcher />
+			<span className='hidden md:block'><ThemeSwitcher /></span>
 		</>
 	);
 	return (
@@ -63,7 +63,7 @@ const Main = () => {
 			<input id='my-drawer-3' type='checkbox' className='drawer-toggle' />
 			<div className='drawer-content flex flex-col'>
 				{/* Navbar */}
-				<div className='w-full navbar bg-gray-800 shadow-xl fixed top-0 left-0 z-40 text-white'>
+				<div className='w-full navbar dark:bg-gray-800 shadow-xl fixed top-0 left-0 z-40 dark:text-white bg-slate-100 bg-opacity-90'>
 					<div className='flex-none lg:hidden'>
 						<label htmlFor='my-drawer-3' className='btn btn-square btn-ghost'>
 							<svg
@@ -84,6 +84,7 @@ const Main = () => {
 							{navItems}
 						</ul>
 					</div>
+					<span className='md:hidden block'><ThemeSwitcher /></span>
 				</div>
 				{/* Page content here */}
 				<div className='min-h-[calc(100vh-80px)]  overflow-hidden duration-200 mt-[70px]'>

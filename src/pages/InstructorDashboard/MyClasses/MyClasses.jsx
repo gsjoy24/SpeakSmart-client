@@ -26,7 +26,7 @@ const MyClasses = () => {
 				<Empty title='Add Classes' path='/dashboard/add-class' />
 			) : (
 				<div className='mx-6'>
-					<h1 className='text-2xl md:text-4xl text-gray-700 font-bold text-center my-6'>Classes Added by You</h1>
+					<h1 className='text-2xl md:text-4xl text-gray-700 dark:to-gray-200 font-bold text-center my-6'>Classes Added by You</h1>
 					<div className='overflow-x-auto'>
 						<table className='table'>
 							{/* head */}

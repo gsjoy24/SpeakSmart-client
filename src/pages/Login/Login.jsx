@@ -30,9 +30,8 @@ const Login = () => {
 	const onSubmit = (formData) => {
 		setLoading(true);
 		loginWithEmail(formData.email, formData.password)
-			.then((data) => {
+			.then(() => {
 				setLoading(false);
-				console.log(data.user);
 				navigate('/');
 				toast.success('successfully logged in');
 			})
@@ -70,6 +69,7 @@ const Login = () => {
 							type={showPass}
 							placeholder='Password'
 							className='input input-bordered w-full'
+							autoComplete="on"
 							{...register('password', {
 								required: true
 							})}
@@ -99,7 +99,7 @@ const Login = () => {
 						<button
 							type='button'
 							className='btn btn-block bg-[#8de4af] dark:bg-gray-700 flex justify-center items-center'>
-							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
+							<GiSpinningBlades size={25} className='animate-spin text-slate-900 dark:text-white' />
 						</button>
 					) : (
 						<button
@@ -115,7 +115,7 @@ const Login = () => {
 						</Link>
 					</p>
 				</form>
-				<GoogleLogin />
+				<GoogleLogin setError={setError} setLoading={setLoading} />
 			</div>
 		</div>
 	);

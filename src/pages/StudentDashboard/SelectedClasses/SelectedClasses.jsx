@@ -29,7 +29,7 @@ const SelectedClasses = () => {
 				<Empty title='See Classes' path='../../classes' />
 			) : (
 				<div className='mx-6'>
-					<h1 className='text-2xl md:text-4xl text-gray-700 font-bold text-center my-6'>All Selected Classes</h1>
+					<h1 className='text-2xl md:text-4xl text-gray-700 dark:text-gray-300 font-bold text-center my-6'>All Selected Classes</h1>
 					<div className='overflow-x-auto'>
 						<table className='table'>
 							{/* head */}

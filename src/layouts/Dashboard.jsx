@@ -15,21 +15,21 @@ const StudentDashboard = () => {
 		<>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='my-selected-classes'>
 					My Selected Classes
 				</NavLink>
 			</li>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='my-enrolled-classes'>
 					My Enrolled Classes
 				</NavLink>
 			</li>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='payment-history'>
 					Payment History
 				</NavLink>
@@ -41,14 +41,14 @@ const StudentDashboard = () => {
 		<>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='add-class'>
 					Add a Class
 				</NavLink>
 			</li>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='my-classes'>
 					My Classes
 				</NavLink>
@@ -59,14 +59,14 @@ const StudentDashboard = () => {
 		<>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='manage-classes'>
 					Manage Classes
 				</NavLink>
 			</li>
 			<li>
 				<NavLink
-					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4' : 'p-4 border-2 border-gray-400')}
+					className={({ isActive }) => (isActive ? 'bg-[#8de4af] p-4 dark:bg-gray-800' : 'p-4 border-2 border-gray-400')}
 					to='manage-users'>
 					Manage Users
 				</NavLink>
@@ -89,7 +89,7 @@ const StudentDashboard = () => {
 					<ul className='menu p-4 w-80 h-full bg-base-200 text-base-content space-y-5 text-lg font-semibold duration-0'>
 						{/* Sidebar content here */}
 						<li>
-							<Link to='../' className='text-2xl font-bold bg-[#8de4af] flex justify-center'>
+							<Link to='../' className='text-2xl font-bold bg-[#8de4af] dark:bg-gray-800 flex justify-center'>
 								<Slide>SpeakSmart</Slide>
 							</Link>
 						</li>

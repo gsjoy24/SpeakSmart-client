@@ -71,7 +71,7 @@ const Signup = () => {
 			{/* form */}
 			<div className='w-full lg:w-1/2'>
 				<form onSubmit={handleSubmit(onSubmit)} className='w-full p-3 space-y-3 max-w-md mx-auto'>
-					<span className='text-2xl font-bold text-gray-900 uppercase text-center block mb-3'>sign up now</span>
+					<span className='text-2xl font-bold text-gray-900 dark:text-gray-300  uppercase text-center block mb-3'>sign up now</span>
 					<input
 						type='text'
 						placeholder='Full Name'
@@ -112,6 +112,7 @@ const Signup = () => {
 								type={showPass}
 								placeholder='Password'
 								className='input input-bordered'
+								autoComplete="on"
 								{...register('password', {
 									required: true,
 									minLength: 6,
@@ -138,6 +139,7 @@ const Signup = () => {
 								type={showConfirmPass}
 								placeholder='Confirm Password'
 								className='input input-bordered'
+								autoComplete="on"
 								{...register('confirm_password')}
 							/>
 							{showConfirmPass === 'password' && (
@@ -217,7 +219,7 @@ const Signup = () => {
 						<button
 							type='button'
 							className='btn btn-block bg-[#8de4af] dark:bg-gray-700 flex justify-center items-center'>
-							<GiSpinningBlades size={25} className='animate-spin text-slate-900' />
+							<GiSpinningBlades size={25} className='animate-spin text-slate-900 dark:text-white' />
 						</button>
 					) : (
 						<button
@@ -233,7 +235,7 @@ const Signup = () => {
 						</Link>
 					</p>
 				</form>
-				<GoogleLogin />
+				<GoogleLogin setLoading={setLoading} setError={setError}/>
 			</div>
 		</div>
 	);

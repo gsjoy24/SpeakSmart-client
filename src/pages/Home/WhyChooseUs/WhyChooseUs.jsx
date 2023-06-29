@@ -1,7 +1,7 @@
 import { FaLaptopHouse, FaPuzzlePiece } from 'react-icons/fa';
 import { GiLifeSupport, GiTeacher } from 'react-icons/gi';
 import SectionHeading from '../../../components/SectionHeading';
-import { Flip, Slide } from 'react-awesome-reveal';
+import {Zoom,Roll } from 'react-awesome-reveal';
 const WhyChooseUs = () => {
 	return (
 		<div className='py-8 mx-4 md:mx-12'>
@@ -9,8 +9,8 @@ const WhyChooseUs = () => {
 
 			<div className='grid grid-cols-1 lg:grid-cols-2 mt-16 gap-8'>
 				{/* 1 */}
-				<Flip>
-					<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
+				<Roll direction='left' delay='50'>
+					<div className='mx-auto h-full w-full px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#4cec4c9f] dark:bg-[#252b31]'>
 						<GiTeacher size={50} className='mx-auto' />
 						<p className='text-xl font-bold my-4'>Highly Skilled Instructors</p>
 						<p>
@@ -18,9 +18,10 @@ const WhyChooseUs = () => {
 							achieve your language learning goals.
 						</p>
 					</div>
-				</Flip>
+				</Roll>
 				{/* 2 */}
-				<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
+				<Roll direction='right' delay='50'>
+					<div className='mx-auto h-full w-full px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#4cec4c9f] dark:bg-[#252b31]'>
 					<FaPuzzlePiece size={50} className='mx-auto' />
 					<p className='text-xl font-bold  my-4'>Well-Structured Curriculum</p>
 					<p>
@@ -28,8 +29,11 @@ const WhyChooseUs = () => {
 						through our thoughtfully designed curriculum that ensures a comprehensive and engaging learning experience.
 					</p>
 				</div>
+				</Roll>
+				
 				{/* 3 */}
-				<div className='mx-auto  px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
+				<Zoom direction='down' delay='50'>
+				<div className='mx-auto h-full w-full px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#4cec4c9f] dark:bg-[#252b31]'>
 					<FaLaptopHouse size={50} className='mx-auto' />
 					<p className='text-xl font-bold  my-4'>Convenient Learning Options</p>
 					<p>
@@ -37,10 +41,11 @@ const WhyChooseUs = () => {
 						classes, to fit your schedule and learning preferences, ensuring a convenient and personalized learning
 						journey.
 					</p>
-				</div>
+					</div>
+				</Zoom>
 				{/* 4 */}
-				<Slide direction='right'>
-					<div className='mx-auto px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#bbffbb9f] dark:bg-[#252b31]'>
+				<Zoom direction='right' delay='20'>
+					<div className='mx-auto px-6 py-12 text-center shadow-lg rounded-3xl max-w-lg dark:text-gray-400 bg-[#4cec4c9f] dark:bg-[#252b31]'>
 						<GiLifeSupport size={50} className='mx-auto' />
 						<p className='text-xl font-bold  my-4'>Supportive Learning Environment</p>
 						<p>
@@ -49,7 +54,7 @@ const WhyChooseUs = () => {
 							participation and fosters a sense of community among learners
 						</p>
 					</div>
-				</Slide>
+				</Zoom>
 			</div>
 		</div>
 	);

@@ -57,7 +57,6 @@ const AuthProvider = ({ children }) => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
 			setLoading(false);
-
 			if (currentUser && currentUser.email) {
 				axios
 					.post(`${import.meta.env.VITE_SERVER_URL}/jwt`, { email: currentUser.email })
@@ -78,8 +77,9 @@ const AuthProvider = ({ children }) => {
 		};
 	}, []);
 
+	// getting the user role
 	useEffect(() => {
-		if (user) {
+		if (user && user?.email) {
 			userRole(user?.email).then((data) => setRole(data));
 		}
 	}, [user]);
